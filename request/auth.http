@@ -1,0 +1,12 @@
+@api = http://localhost:3100/auth
+
+//GET {{api}}
+
+POST {{api}}
+Content-Type: application/json
+
+{
+    "user": "marlon",
+    "password": "marln"
+}
+

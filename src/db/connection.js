@@ -1,5 +1,6 @@
 import sql from "mssql";
 import config from "../config.js";
+import { Sequelize } from "sequelize";
 
 const dbSettings = {
     user: config.dbUser,
@@ -23,4 +24,10 @@ export const getConnection = async () => {
     }
 };
 
-export { sql };
+const sequelize = new Sequelize(config.dbDatabase, config.dbUser, config.dbPassword, {
+    host: config.dbServer,
+    dialect: 'mssql', // Specify your database dialect
+  });
+
+
+  export { sql, sequelize };

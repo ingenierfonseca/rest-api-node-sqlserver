@@ -1,7 +1,7 @@
 import app from "./app.js";
-import { getConnection } from "./db/connection.js";
+//import { getConnection } from "./db/connection.js";
 
-getConnection();
+//getConnection();
 
 app.listen(app.get('port'));
 

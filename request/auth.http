@@ -1,25 +1,71 @@
 @apiAuth = http://localhost:3100/api/v1/auth
-@apiUser = http://localhost:3100/api/v1/auth/user/1
+@apiUser = http://localhost:3100/api/v1/auth/user/marlon
 @apiConfig = http://localhost:3100/api/v1/auth/configuration/1
 
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTQ2NzA4MjQsImV4cCI6MTcxNDcxNDAyNH0.Qm_vAgwUFFTvweR_c_yxh_rNBwfydIjbbSlmJBajQIg
+@apiProduct = http://localhost:3100/api/v1/product
 
-GET {{apiUser}}
-Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTQ2NzE1NzYsImV4cCI6MTcxNDcxNDc3Nn0.tEIq53HVk_Yp0FKDwuwnsmr7164-1Ag6OrQe2497ryU
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTUyMTY0NjcsImV4cCI6MTcxNTI1OTY2N30.GtcUxNnv7YcG6E_RBFqkM5xOv3i7Y7s4Wi2lHQgIJhU
 
-#Get configurations
-//GET {{apiConfig}}
+//GET {{apiUser}}
 //Content-Type: application/json
-//Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTQ2NzE1NzYsImV4cCI6MTcxNDcxNDc3Nn0.tEIq53HVk_Yp0FKDwuwnsmr7164-1Ag6OrQe2497ryU
+//Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTUwNDk2NDMsImV4cCI6MTcxNTA5Mjg0M30.NSuHDjmRqlHX7dHicPacNZF7_B1R5pUGzBEqErd5jMA
+
+### Get configurations
+GET {{apiConfig}}
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
 
 //GET {{apiAuth}}
 
-#Post
-//POST {{apiAuth}}
-//Content-Type: application/json
+### Post
+POST {{apiAuth}}
+Content-Type: application/json
 
-//{
-    //"user": "marlon",
-    //"password": "marlon01"
-//}
+{
+    "user": "marlon",
+    "password": "marlon01"
+}
+
+### POST Products
+POST {{apiProduct}}
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+{
+    "Id": 1058,
+    "Codigo": "1058",
+    "Descripcion": "ATOMIZADORLT JARDI HOGAR",
+    "IdClase": 2,
+    "IdSubClase": 2,
+    "IdUnidad": 27,
+    "IdEmpaque": 12,
+    "Proveedor": 23,
+    "PrecioCostoUSD": 3.18,
+    "PrecioCostoCOR": 115,
+    "pvpc": 150,
+    "pvdc": 128,
+    "pvpu": 4.15,
+    "pvdu": 3.54,
+    "Impuesto": 0,
+    "IdEstado": 0,
+    "PrecioMinimoVenta": 123.05,
+    "PrecioVentaDistribuidor": 11.3,
+    "PrecioVentaPublico": 30.43,
+    "PrecioMinimoVentaUSD": 3.4,
+    "PrcPrecioMinimoVenta": 7
+}
+
+### GET Products
+GET {{apiProduct}}?limit=3&page=1&sortBy=desc&filter=regproveedor&keyword=1
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+### GET Products
+GET {{apiProduct}}/818
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+### GET Products
+DELETE {{apiProduct}}/817
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}

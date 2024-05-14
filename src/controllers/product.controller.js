@@ -1,6 +1,7 @@
 import { validationResult } from "express-validator";
 import { getProducts, getProduct, deleteProduct, createProduct } from "../repositories/product.repository.js";
 import Product from "../models/product.model.js";
+import { getClase, getEmpaque, getProveedor, getSubClase, getUnidad } from "../repositories/catalogo.repository.js";
 
 
 const POST = async (req, res) => {
@@ -59,6 +60,31 @@ const POST = async (req, res) => {
     })
 
     try {
+        const resultClase = await getClase(IdClase);
+        if (resultClase == null) {
+            return res.status(400).json({ message: 'IdClase invalid Param' })
+        }
+
+        const resultSubClase = await getSubClase(IdSubClase);
+        if (resultSubClase == null) {
+            return res.status(400).json({ message: 'IdSubClase invalid Param' })
+        }
+
+        const resultEmpaque = await getEmpaque(IdEmpaque);
+        if (resultEmpaque == null) {
+            return res.status(400).json({ message: 'IdEmpaque invalid Param' })
+        }
+
+        const resultProveedor = await getProveedor(Proveedor);
+        if (resultProveedor == null) {
+            return res.status(400).json({ message: 'Proveedor invalid Param' })
+        }
+
+        const resultUnidad = await getUnidad(IdUnidad);
+        if (resultUnidad == null) {
+            return res.status(400).json({ message: 'IdUnidad invalid Param' })
+        }
+
         const result = await createProduct(productModel);
 
         return res.json({

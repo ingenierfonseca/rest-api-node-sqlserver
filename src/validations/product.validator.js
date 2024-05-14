@@ -1,4 +1,5 @@
 import { body, query } from "express-validator";
+import { lastDateSincroValidate } from "./lastDateSincro.validator.js";
 
 export const productDataValidate = [
     body("Id")
@@ -144,5 +145,9 @@ export const productDataValidateFilter = [
         .withMessage('It must be Integer'),
     query('page')
         .isNumeric()
-        .withMessage('It must be Integer')
+        .withMessage('It must be Integer'),
+    query('ultimaFechaSincro')
+        .custom((value, { req }) => {
+            return lastDateSincroValidate(value, {req})
+        }),
 ];

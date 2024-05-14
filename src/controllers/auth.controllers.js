@@ -24,8 +24,7 @@ export const auth = async (req, res) => {
 
         if (result == null) return res.status(400).json({ message: 'Invalid User' })
 
-        const token =  await generateJWT(1, user)
-        console.log(token)
+        const token =  await generateJWT(result.Id, user)
 
         return res.json({
             ok: true,

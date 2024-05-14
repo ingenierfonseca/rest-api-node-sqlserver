@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 export const validatorJWT = (req, res, next) => {
     const token = req.header('authorization');
 
-    if (!token) {console.log(req.header('authorization'));
+    if (!token) {
         return res.status(401).json({
             ok: false,
             message: 'Invalid token'

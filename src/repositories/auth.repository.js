@@ -17,6 +17,16 @@ export const login = async (userCode, password) =>  {
     }
 }
 
+export const getUserById = async (id) => {
+    try {
+        const user = await User.findOne({where: {Id: id}})
+        
+        return user
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getUser = async (code) => {
     try {
         const user = await User.findOne({where: {Codigo: code}})

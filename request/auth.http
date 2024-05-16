@@ -1,22 +1,21 @@
 @apiAuth = http://localhost:3100/api/v1/auth
+@apiAuthReNewToken = http://localhost:3100/api/v1/auth-refresh-token
 @apiUser = http://localhost:3100/api/v1/auth/user/marlon
 @apiConfig = http://localhost:3100/api/v1/auth/configuration/1
 
 @apiProduct = http://localhost:3100/api/v1/product
 @apiCatalog = http://localhost:3100/api/v1/catalogs
 
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU2OTk5NjMsImV4cCI6MTcxNTc0MzE2M30.THsbgeujNexQJqvFvhE-nASOi3yuNEIYplAXEywe1ek
-
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTcxNTg3MTk5MH0.zbhxmiXot50UbzezqRSELMv45_7lfZzGWHWIq6tFJVM
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTcxNTg3MTk5MH0.zbhxmiXot50UbzezqRSELMv45_7lfZzGWHWIq6tFJVM"
+@ACCESS_JWT_REFRESH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM
 //GET {{apiUser}}
 //Content-Type: application/json
 //Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTUwNDk2NDMsImV4cCI6MTcxNTA5Mjg0M30.NSuHDjmRqlHX7dHicPacNZF7_B1R5pUGzBEqErd5jMA
 
-### Get configurations
-GET {{apiConfig}}
-Content-Type: application/json
-Authorization: {{ACCESS_JWT}}
 
-//GET {{apiAuth}}
+### GET
+GET {{apiAuth}}
 
 ### Post
 POST {{apiAuth}}
@@ -26,6 +25,20 @@ Content-Type: application/json
     "user": "marlon",
     "password": "marlon01"
 }
+
+### Post renewToken
+POST {{apiAuthReNewToken}}
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM"
+}
+
+### Get configurations
+GET {{apiConfig}}
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
 
 ### POST Products
 POST {{apiProduct}}

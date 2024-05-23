@@ -124,13 +124,19 @@ export const productDataValidate = [
 
 export const productDataValidateFilter = [
     query('filter').custom((value, { req }) => {
-        if (!req.query.keyword) {
+        if (value != undefined && !req.query.keyword) {
             throw new Error('keyword is required');
         }
+
+        if (value !== undefined) {
+          if (value !== 'codigo' && value !== 'descripcion' && value !== 'regproveedor') {
+            throw new Error('filter invalid value');
+          }
+        }
         return true;
-      }).isIn(["codigo", "descripcion", "regproveedor"]),
+      }),
     query('keyword').custom((value, { req }) => {
-        if (!req.query.filter) {
+        if (value != undefined && !req.query.filter) {
             throw new Error('filter is required');
         }
         if (req.query.filter && req.query.filter === 'regproveedor') {

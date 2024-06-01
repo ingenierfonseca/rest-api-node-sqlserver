@@ -1,5 +1,6 @@
 import { Op } from "sequelize"
 import Product from "../models/product.model.js"
+import { fechaNumeric17 } from "../helpers/utils.js";
 
 export const createProduct = async (p) => {
     try {
@@ -24,7 +25,8 @@ export const createProduct = async (p) => {
             PrecioVentaDistribuidor: p.PrecioVentaDistribuidor,
             PrecioVentaPublico: p.PrecioVentaPublico,
             PrecioMinimoVentaUSD: p.PrecioMinimoVentaUSD,
-            PrcPrecioMinimoVenta: p.PrcPrecioMinimoVenta
+            PrcPrecioMinimoVenta: p.PrcPrecioMinimoVenta,
+            FechaSincronizacion: fechaNumeric17()
         });
 
         return result;
@@ -34,7 +36,7 @@ export const createProduct = async (p) => {
     }
 }
 
-export const getProducts = async (filter, keyword, page, limit, orderBy, sortBy) => {
+export const getProducts = async (filter, keyword, page, limit, orderBy, sortBy, fechaSincro) => {
     try {
         const query = {}
 
@@ -47,6 +49,8 @@ export const getProducts = async (filter, keyword, page, limit, orderBy, sortBy)
                 query.Proveedor = {[Op.substring]: keyword}
             }
         }
+
+        query.FechaSincronizacion = {[Op.gt]: fechaSincro}
 
         const queries = {
             offset: (page -1) * limit,

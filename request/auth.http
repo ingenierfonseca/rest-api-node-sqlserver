@@ -6,7 +6,7 @@
 @apiProduct = http://localhost:3100/api/v1/product
 @apiCatalog = http://localhost:3100/api/v1/catalogs
 
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTcxNTg3MTk5MH0.zbhxmiXot50UbzezqRSELMv45_7lfZzGWHWIq6tFJVM
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTcxNzM1NzUsImV4cCI6MTcxNzIxNjc3NX0.DkC_JiIVCaq6HpTHo91dkr3QsEhRB8H_ZIidUExxYWw
 //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTcxNTg3MTk5MH0.zbhxmiXot50UbzezqRSELMv45_7lfZzGWHWIq6tFJVM"
 @ACCESS_JWT_REFRESH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM
 //GET {{apiUser}}
@@ -36,7 +36,7 @@ Authorization: {{ACCESS_JWT}}
 }
 
 ### Get configurations
-GET {{apiConfig}}
+GET {{apiConfig}}?fechaSincro=31052024165030100
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
@@ -46,8 +46,8 @@ Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
 {
-    "Id": 1058,
-    "Codigo": "1058",
+    "Id": 818,
+    "Codigo": "818",
     "Descripcion": "ATOMIZADORLT JARDI HOGAR",
     "IdClase": 2,
     "IdSubClase": 2,
@@ -70,7 +70,7 @@ Authorization: {{ACCESS_JWT}}
 }
 
 ### GET Products
-GET {{apiProduct}}?limit=30&page=1&sortBy=desc&filter=regproveedor&keyword=1
+GET {{apiProduct}}?limit=3&page=1&sortBy=desc&filter=codigo&keyword=817
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
@@ -80,12 +80,21 @@ Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
 ### GET Products
-DELETE {{apiProduct}}/817
+DELETE {{apiProduct}}/818
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
 
 ### Get Catalogs
-GET {{apiCatalog}}/clase?ultimaFechaSincro=03032024104534
+GET {{apiCatalog}}/subclase?ultimaFechaSincro=03032024104534
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
+
+{
+      "Id": 12,
+      "Codigo": "012",
+      "Descripcion": "Purga Oral",
+      "Registro": 12,
+      "Facturar": null,
+      "IdEstado": 0
+}

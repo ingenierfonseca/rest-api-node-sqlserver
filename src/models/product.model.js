@@ -76,7 +76,8 @@ const Product = sequelize2.define('Products', {
     PrcPrecioMinimoVenta: {
         type: DataTypes.NUMBER,
         field: 'PrcPrecioMinimoVenta'
-    }
+    },
+    FechaSincronizacion: DataTypes.BIGINT
 }, { 
     tableName: 'prm_Productos',
     timestamps: false

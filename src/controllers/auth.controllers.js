@@ -72,8 +72,8 @@ export const refreshToken = async (req, res) => {
 
 export const findUser = async (req, res) => {
     const {Code} = req.params
+    const {fechaSincro = 0} = req.query
 
-    console.log(Code)
     if (Code == null) {
         return res.status(400).json({
             message: 'Bad Request. Please fill all fields'
@@ -81,9 +81,9 @@ export const findUser = async (req, res) => {
     }
 
     try {
-        const result = await getUser(Code)
+        const result = await getUser(Code, fechaSincro)
 
-        if (result == null) return res.status(400).json({ message: 'Invalid Param' })
+        //if (result == null) return res.status(400).json({ message: 'Invalid Param' })
 
         return res.json({
             ok: true,
@@ -98,6 +98,7 @@ export const findUser = async (req, res) => {
 
 export const configuration = async (req, res) => {
     const {Id} = req.params
+    const {fechaSincro = 0} = req.query
 
     console.log(Id)
     if (Id == null) {
@@ -107,9 +108,9 @@ export const configuration = async (req, res) => {
     }
 
     try {
-        const result = await getConfiguration(Id)
+        const result = await getConfiguration(Id, parseInt(fechaSincro))
 
-        if (result == null) return res.status(400).json({ message: 'Invalid Param' })
+        //if (result == null) return res.status(400).json({ message: 'Invalid Param' })
 
         return res.json({
             ok: true,

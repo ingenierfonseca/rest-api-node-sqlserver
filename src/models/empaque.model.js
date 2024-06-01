@@ -20,6 +20,7 @@ const Empaque = sequelize2.define('Empaque', {
         type: DataTypes.TINYINT,
         field: 'estado'
     },
+    FechaSincronizacion: DataTypes.BIGINT
 }, { 
     tableName: 'prm_Empaques',
     timestamps: false

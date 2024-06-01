@@ -17,6 +17,7 @@ const Configuration = sequelize.define('Configuration', {
     PrimaryColor: DataTypes.STRING,
     SecondaryColor: DataTypes.STRING,
     SincronizationTimeDelay: DataTypes.INTEGER,
+    FechaSincronizacion: DataTypes.BIGINT
 }, {
     tableName: 'mstEmpresa',
     timestamps: false,

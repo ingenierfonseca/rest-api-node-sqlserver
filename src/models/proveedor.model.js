@@ -24,6 +24,7 @@ const Proveedor = sequelize2.define('Proveedor', {
         type: DataTypes.TINYINT,
         field: 'estado'
     },
+    FechaSincronizacion: DataTypes.BIGINT
 }, { 
     tableName: 'prm_Proveedores',
     timestamps: false

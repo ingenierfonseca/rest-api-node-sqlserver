@@ -13,7 +13,8 @@ const User = sequelize.define('User', {
     Codigo: DataTypes.STRING,
     Clave: DataTypes.STRING,
     Nombres: DataTypes.STRING,
-    Apellidos: DataTypes.STRING
+    Apellidos: DataTypes.STRING,
+    FechaSincronizacion: DataTypes.BIGINT
 }, { 
     tableName: 'mstUsuario',
     timestamps: false,

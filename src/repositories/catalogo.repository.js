@@ -3,6 +3,7 @@ import SubClase from "../models/subclase.model.js"
 import Empaque from "../models/empaque.model.js"
 import Proveedor from "../models/proveedor.model.js"
 import Unidad from "../models/unidad.model.js"
+import { Op } from "sequelize"
 
 export const Catalogo = {
     CLASE: 'clase',
@@ -63,9 +64,9 @@ export const getUnidad = async (id) => {
 }
 
 ///////////////
-export const getAllClases = async () => {
+export const getAllClases = async (fechaSincro) => {
     try {
-        const catalog = await Clase.findAll()
+        const catalog = await Clase.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
         
         return catalog
     } catch (error) {
@@ -73,9 +74,9 @@ export const getAllClases = async () => {
     }
 }
 
-export const getAllSubClases = async () => {
+export const getAllSubClases = async (fechaSincro) => {
     try {
-        const catalog = await SubClase.findAll()
+        const catalog = await SubClase.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
         
         return catalog
     } catch (error) {
@@ -83,9 +84,9 @@ export const getAllSubClases = async () => {
     }
 }
 
-export const getAllEmpaques = async () => {
+export const getAllEmpaques = async (fechaSincro) => {
     try {
-        const catalog = await Empaque.findAll()
+        const catalog = await Empaque.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
         
         return catalog
     } catch (error) {
@@ -93,9 +94,9 @@ export const getAllEmpaques = async () => {
     }
 }
 
-export const getAllProveedores = async () => {
+export const getAllProveedores = async (fechaSincro) => {
     try {
-        const catalog = await Proveedor.findAll()
+        const catalog = await Proveedor.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
         
         return catalog
     } catch (error) {
@@ -103,9 +104,9 @@ export const getAllProveedores = async () => {
     }
 }
 
-export const getAllUnidades = async () => {
+export const getAllUnidades = async (fechaSincro) => {
     try {
-        const catalog = await Unidad.findAll()
+        const catalog = await Unidad.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
         
         return catalog
     } catch (error) {

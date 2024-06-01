@@ -20,6 +20,7 @@ const Unidad = sequelize2.define('Unidad', {
         type: DataTypes.TINYINT,
         field: 'estado'
     },
+    FechaSincronizacion: DataTypes.BIGINT
 }, { 
     tableName: 'prm_Unidades',
     timestamps: false

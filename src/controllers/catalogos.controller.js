@@ -3,6 +3,7 @@ import { Catalogo, getAllClases, getAllEmpaques, getAllProveedores, getAllSubCla
 
 const GETALL = async (req, res) => {
     const errors = validationResult(req);
+    const {fechaSincro = 0} = req.query
 
     if (!errors.isEmpty()) {
         return res.status(400).json({ success: false, errors:  errors['errors']})
@@ -13,20 +14,20 @@ const GETALL = async (req, res) => {
 
     try {
         switch(Catalog) {
-            case Catalogo.CLASE:console.log('tipo clase');
-                result =  await getAllClases();
+            case Catalogo.CLASE:
+                result =  await getAllClases(fechaSincro);
                 break;
             case Catalogo.SUBCLASE:
-                result = await getAllSubClases();
+                result = await getAllSubClases(fechaSincro);
                 break;
             case Catalogo.EMPAQUE:
-                result = await getAllEmpaques();
+                result = await getAllEmpaques(fechaSincro);
                 break;
             case Catalogo.PROVEEDOR:
-                result = await getAllProveedores();
+                result = await getAllProveedores(fechaSincro);
                 break;
             case Catalogo.UNIDAD:
-                result = await getAllUnidades();
+                result = await getAllUnidades(fechaSincro);
                 break;
         }
 

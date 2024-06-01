@@ -20,6 +20,7 @@ const Clase = sequelize2.define('Clase', {
         type: DataTypes.TINYINT,
         field: 'estado'
     },
+    FechaSincronizacion: DataTypes.BIGINT
 }, { 
     tableName: 'prm_Clases',
     timestamps: false

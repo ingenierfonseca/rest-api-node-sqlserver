@@ -28,6 +28,7 @@ const SubClase = sequelize2.define('SubClase', {
         type: DataTypes.TINYINT,
         field: 'estado'
     },
+    FechaSincronizacion: DataTypes.BIGINT
 }, { 
     tableName: 'prm_SubClases',
     timestamps: false

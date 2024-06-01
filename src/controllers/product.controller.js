@@ -107,8 +107,10 @@ const GETALL = async (req, res) => {
 
     const { filter, keyword, page = 1, limit = 15, orderBy = 'descripcion', sortBy = 'asc' } = req.query;
 
+    const {fechaSincro = 0} = req.query
+
     try {
-        const result = await getProducts(filter, keyword, parseInt(page), parseInt(limit), orderBy, sortBy);
+        const result = await getProducts(filter, keyword, parseInt(page), parseInt(limit), orderBy, sortBy, fechaSincro);
 
         return res.json({
             success: true,

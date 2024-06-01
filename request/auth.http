@@ -9,10 +9,8 @@
 @ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTcxNzM1NzUsImV4cCI6MTcxNzIxNjc3NX0.DkC_JiIVCaq6HpTHo91dkr3QsEhRB8H_ZIidUExxYWw
 //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTcxNTg3MTk5MH0.zbhxmiXot50UbzezqRSELMv45_7lfZzGWHWIq6tFJVM"
 @ACCESS_JWT_REFRESH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM
-//GET {{apiUser}}
-//Content-Type: application/json
-//Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTUwNDk2NDMsImV4cCI6MTcxNTA5Mjg0M30.NSuHDjmRqlHX7dHicPacNZF7_B1R5pUGzBEqErd5jMA
 
+@FECHASINCRO = 31052024165030100
 
 ### GET
 GET {{apiAuth}}
@@ -35,8 +33,14 @@ Authorization: {{ACCESS_JWT}}
     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM"
 }
 
+### Get user
+GET {{apiUser}}?fechaSincro={{FECHASINCRO}}
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+
 ### Get configurations
-GET {{apiConfig}}?fechaSincro=31052024165030100
+GET {{apiConfig}}?fechaSincro={{FECHASINCRO}}
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
@@ -70,7 +74,7 @@ Authorization: {{ACCESS_JWT}}
 }
 
 ### GET Products
-GET {{apiProduct}}?limit=3&page=1&sortBy=desc&filter=codigo&keyword=817
+GET {{apiProduct}}?limit=3&page=1&sortBy=desc&filter=codigo&keyword=817&fechaSincro={{FECHASINCRO}}
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
@@ -86,7 +90,7 @@ Authorization: {{ACCESS_JWT}}
 
 
 ### Get Catalogs
-GET {{apiCatalog}}/subclase?ultimaFechaSincro=03032024104534
+GET {{apiCatalog}}/subclase?fechaSincro={{FECHASINCRO}}
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 

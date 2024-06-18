@@ -4,12 +4,16 @@ import Empaque from "../models/empaque.model.js"
 import Proveedor from "../models/proveedor.model.js"
 import Unidad from "../models/unidad.model.js"
 import { Op } from "sequelize"
+import Moneda from "../models/moneda.model.js"
+import TipoPrecio from "../models/tipo_precio.model.js"
 
 export const Catalogo = {
     CLASE: 'clase',
     SUBCLASE: 'subclase',
     EMPAQUE: 'empaque',
+    MONEDA: 'moneda',
     PROVEEDOR: 'proveedor',
+    TIPOPRECIO: 'tipo_precio',
     UNIDAD: 'unidad'
 }
 
@@ -43,9 +47,29 @@ export const getEmpaque = async (id) => {
     }
 }
 
+export const getMoneda = async (id) => {
+    try {
+        const catalog = await Moneda.findOne({where: {Id: id}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getProveedor = async (id) => {
     try {
         const catalog = await Proveedor.findOne({where: {Id: id}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getTipoPrecio = async (id) => {
+    try {
+        const catalog = await TipoPrecio.findOne({where: {Id: id}})
         
         return catalog
     } catch (error) {
@@ -94,9 +118,29 @@ export const getAllEmpaques = async (fechaSincro) => {
     }
 }
 
+export const getAllMonedas = async (fechaSincro) => {
+    try {
+        const catalog = await Moneda.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getAllProveedores = async (fechaSincro) => {
     try {
         const catalog = await Proveedor.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getAllTipoPrecios = async (fechaSincro) => {
+    try {
+        const catalog = await TipoPrecio.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
         
         return catalog
     } catch (error) {

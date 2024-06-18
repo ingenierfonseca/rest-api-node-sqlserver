@@ -6,11 +6,11 @@
 @apiProduct = http://localhost:3100/api/v1/product
 @apiCatalog = http://localhost:3100/api/v1/catalogs
 
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTcxNzM1NzUsImV4cCI6MTcxNzIxNjc3NX0.DkC_JiIVCaq6HpTHo91dkr3QsEhRB8H_ZIidUExxYWw
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTcxNTg3MTk5MH0.zbhxmiXot50UbzezqRSELMv45_7lfZzGWHWIq6tFJVM"
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTcyODUyODEsImV4cCI6MTcxNzMyODQ4MX0.3jtRlaeRyWMaylYRPG48y53B1zG6eAadZPoFKDgaKsU
+
 @ACCESS_JWT_REFRESH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM
 
-@FECHASINCRO = 31052024165030100
+@FECHASINCRO = 20240531201548557
 
 ### GET
 GET {{apiAuth}}
@@ -74,7 +74,7 @@ Authorization: {{ACCESS_JWT}}
 }
 
 ### GET Products
-GET {{apiProduct}}?limit=3&page=1&sortBy=desc&filter=codigo&keyword=817&fechaSincro={{FECHASINCRO}}
+GET {{apiProduct}}?limit=100&page=1&sortBy=desc&fechaSincro={{FECHASINCRO}}
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 

@@ -10,5 +10,6 @@ export const fechaNumeric17 = () => {
 
     const dateString = `${year}${month}${day}${hours}${minutes}${seconds}${milliseconds}`;
     
-    return Number(dateString);
+    //return Number(dateString);
+    return dateString;
 }

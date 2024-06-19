@@ -5,8 +5,9 @@
 
 @apiProduct = http://localhost:3100/api/v1/product
 @apiCatalog = http://localhost:3100/api/v1/catalogs
+@apiPriceBranch = http://localhost:3100/api/v1/price-branch
 
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTcyODUyODEsImV4cCI6MTcxNzMyODQ4MX0.3jtRlaeRyWMaylYRPG48y53B1zG6eAadZPoFKDgaKsU
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTg3MjU2NzMsImV4cCI6MTcxODc2ODg3M30.wXyYBDq444KYjkcKSMruatHVTHjGv_SPfEvCahMcy2k
 
 @ACCESS_JWT_REFRESH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM
 
@@ -90,15 +91,26 @@ Authorization: {{ACCESS_JWT}}
 
 
 ### Get Catalogs
-GET {{apiCatalog}}/subclase?fechaSincro={{FECHASINCRO}}
+GET {{apiCatalog}}/moneda?fechaSincro={{FECHASINCRO}}
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+
+### Get Prices
+GET {{apiPriceBranch}}?page=1&limit=10&fechaSincro={{FECHASINCRO}}
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+
+### POST Prices
+POST {{apiPriceBranch}}
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
 {
-      "Id": 12,
-      "Codigo": "012",
-      "Descripcion": "Purga Oral",
-      "Registro": 12,
-      "Facturar": null,
-      "IdEstado": 0
+      "AgenciaId": 1,
+      "TipoPrecioId": 1,
+      "ProductoId": 881,
+      "MonedaId": 1,
+      "Precio": "350",
 }

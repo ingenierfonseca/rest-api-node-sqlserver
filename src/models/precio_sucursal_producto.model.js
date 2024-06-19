@@ -6,7 +6,7 @@ const PrecioSucursalProducto = sequelize2.define('PrecioSucursalProducto', {
     Id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        field: 'registro'
+        field: 'ID'
     },
     AgenciaId: {
         type: DataTypes.INTEGER,
@@ -32,7 +32,7 @@ const PrecioSucursalProducto = sequelize2.define('PrecioSucursalProducto', {
         type: DataTypes.BOOLEAN,
         field: 'Activo'
     },
-    FechaSincronizacion: DataTypes.BIGINT
+    FechaSincronizacion: DataTypes.STRING(17)
 }, { 
     tableName: 'prmPrecioSucursalProducto',
     timestamps: false

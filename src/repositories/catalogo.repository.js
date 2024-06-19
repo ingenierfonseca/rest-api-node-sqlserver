@@ -6,8 +6,10 @@ import Unidad from "../models/unidad.model.js"
 import { Op } from "sequelize"
 import Moneda from "../models/moneda.model.js"
 import TipoPrecio from "../models/tipo_precio.model.js"
+import Agencia from "../models/agencia.model.js"
 
 export const Catalogo = {
+    AGENCIA: 'agencia',
     CLASE: 'clase',
     SUBCLASE: 'subclase',
     EMPAQUE: 'empaque',
@@ -15,6 +17,16 @@ export const Catalogo = {
     PROVEEDOR: 'proveedor',
     TIPOPRECIO: 'tipo_precio',
     UNIDAD: 'unidad'
+}
+
+export const getAgencia = async (id) => {
+    try {
+        const catalog = await Agencia.findOne({where: {Id: id}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 export const getClase = async (id) => {
@@ -88,6 +100,16 @@ export const getUnidad = async (id) => {
 }
 
 ///////////////
+export const getAllAgencias = async (fechaSincro) => {
+    try {
+        const catalog = await Agencia.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getAllClases = async (fechaSincro) => {
     try {
         const catalog = await Clase.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})

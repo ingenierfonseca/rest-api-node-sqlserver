@@ -46,34 +46,6 @@ export const productDataValidate = [
       .withMessage("Proveedor is required")
       .isNumeric()
       .withMessage("Proveedor should be number"),
-    body("PrecioCostoUSD")
-      .optional()
-      .isNumeric()
-      .withMessage("PrecioCostoUSD should be number"),
-    body("PrecioCostoCOR")
-        .optional()
-      .isNumeric()
-      .withMessage("PrecioCostoCOR should be number"),
-    body("pvpc")
-      .exists({ checkFalsy: true })
-      .withMessage("pvpc is required")
-      .isNumeric()
-      .withMessage("pvpc should be number"),
-    body("pvdc")
-      .exists({ checkFalsy: true })
-      .withMessage("pvdc is required")
-      .isNumeric()
-      .withMessage("pvdc should be number"),
-    body("pvpu")
-      .exists({ checkFalsy: true })
-      .withMessage("pvpu is required")
-      .isNumeric()
-      .withMessage("pvpu should be number"),
-    body("pvdu")
-      .exists({ checkFalsy: true })
-      .withMessage("pvdu is required")
-      .isNumeric()
-      .withMessage("pvdu should be number"),
     body('Impuesto')
         .custom((value, { req }) => {
             if (!req.body.Impuesto && req.body.Impuesto !== 0) {
@@ -96,26 +68,6 @@ export const productDataValidate = [
         
             return true;
         }),
-    body("PrecioMinimoVenta")
-        .optional()
-      .isNumeric()
-      .withMessage("PrecioMinimoVenta should be number"),
-    body("PrecioVentaDistribuidor")
-        .optional()
-      .isNumeric()
-      .withMessage("PrecioVentaDistribuidor should be number"),
-    body("PrecioVentaPublico")
-        .optional()
-      .isNumeric()
-      .withMessage("PrecioVentaPublico should be number"),
-    body("PrecioMinimoVentaUSD")
-        .optional()
-      .isNumeric()
-      .withMessage("PrecioMinimoVentaUSD should be number"),
-    body("PrcPrecioMinimoVenta")
-        .optional()
-      .isNumeric()
-      .withMessage("PrcPrecioMinimoVenta should be number"),
   ];
 
   const isNumericIncludingZero = (value) => {

@@ -4,8 +4,9 @@ import { fechaNumeric17 } from "../helpers/utils.js";
 
 export const createProduct = async (p) => {
     try {
+        const id = await getNewId();
         const result = await Product.create({
-            Id : p.Id,
+            Id : id,
             Codigo: p.Codigo,
             Descripcion: p.Descripcion,
             IdClase: p.IdClase,
@@ -13,19 +14,12 @@ export const createProduct = async (p) => {
             IdUnidad: p.IdUnidad,
             IdEmpaque: p.IdEmpaque,
             Proveedor: p.Proveedor,
-            PrecioCostoUSD: p.PrecioCostoUSD,
-            PrecioCostoCOR: p.PrecioCostoCOR,
-            pvpc: p.pvpc,
-            pvdc: p.pvdc,
-            pvpu: p.pvpu,
-            pvdu: p.pvdu,
+            pvpc: 0,
+            pvdc: 0,
+            pvpu: 0,
+            pvdu: 0,
             Impuesto: p.Impuesto,
             IdEstado: p.IdEstado,
-            PrecioMinimoVenta: p.PrecioMinimoVenta,
-            PrecioVentaDistribuidor: p.PrecioVentaDistribuidor,
-            PrecioVentaPublico: p.PrecioVentaPublico,
-            PrecioMinimoVentaUSD: p.PrecioMinimoVentaUSD,
-            PrcPrecioMinimoVenta: p.PrcPrecioMinimoVenta,
             FechaSincronizacion: fechaNumeric17()
         });
 
@@ -87,9 +81,29 @@ export const getProducts = async (filter, keyword, page, limit, orderBy, sortBy,
     }
 }
 
+const getNewId = async () => {
+    try {
+        const maxId = await Product.max('Id')
+        
+        return maxId + 1;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getProduct = async (id) => {
     try {
         const product = await Product.findOne({where: {Id: id}})
+        
+        return product
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getProductByCode = async (code) => {
+    try {
+        const product = await Product.findOne({where: {Codigo: code}})
         
         return product
     } catch (error) {

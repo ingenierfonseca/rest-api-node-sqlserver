@@ -37,14 +37,14 @@ const Product = sequelize2.define('Products', {
         type: DataTypes.TINYINT,
         field: 'regproveedor'
     },
-    PrecioCostoUSD: { 
+    /*PrecioCostoUSD: { 
         type: DataTypes.NUMBER,
         field: 'PrecioCostoUSD'
     },
     PrecioCostoCOR: {
         type: DataTypes.NUMBER,
         field: 'PrecioCostoCOR'
-    },
+    },*/
     pvpc: DataTypes.NUMBER,
     pvdc: DataTypes.NUMBER,
     pvpu: DataTypes.NUMBER,
@@ -57,7 +57,7 @@ const Product = sequelize2.define('Products', {
         type: DataTypes.TINYINT,
         field: 'estado'
     },
-    PrecioMinimoVenta: {
+    /*PrecioMinimoVenta: {
         type: DataTypes.NUMBER,
         field: 'PrecioMinimoVenta'
     },
@@ -76,8 +76,8 @@ const Product = sequelize2.define('Products', {
     PrcPrecioMinimoVenta: {
         type: DataTypes.NUMBER,
         field: 'PrcPrecioMinimoVenta'
-    },
-    FechaSincronizacion: DataTypes.BIGINT
+    },*/
+    FechaSincronizacion: DataTypes.STRING(17)
 }, { 
     tableName: 'prm_Productos',
     timestamps: false

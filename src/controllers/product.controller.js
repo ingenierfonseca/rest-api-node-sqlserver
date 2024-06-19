@@ -1,5 +1,5 @@
 import { validationResult } from "express-validator";
-import { getProducts, getProduct, deleteProduct, createProduct } from "../repositories/product.repository.js";
+import { getProducts, getProduct, deleteProduct, createProduct, getProductByCode } from "../repositories/product.repository.js";
 import Product from "../models/product.model.js";
 import { getClase, getEmpaque, getProveedor, getSubClase, getUnidad } from "../repositories/catalogo.repository.js";
 
@@ -20,19 +20,8 @@ const POST = async (req, res) => {
         IdUnidad,
         IdEmpaque,
         Proveedor,
-        PrecioCostoUSD,
-        PrecioCostoCOR,
-        pvpc,
-        pvdc,
-        pvpu,
-        pvdu,
         Impuesto,
-        IdEstado,
-        PrecioMinimoVenta,
-        PrecioVentaDistribuidor,
-        PrecioVentaPublico,
-        PrecioMinimoVentaUSD,
-        PrcPrecioMinimoVenta
+        IdEstado
     } = req.body;
 
     const productModel = new Product({
@@ -44,19 +33,8 @@ const POST = async (req, res) => {
         IdUnidad: IdUnidad,
         IdEmpaque: IdEmpaque,
         Proveedor: Proveedor,
-        PrecioCostoUSD: PrecioCostoUSD,
-        PrecioCostoCOR: PrecioCostoCOR,
-        pvpc: pvpc,
-        pvdc: pvdc,
-        pvpu: pvpu,
-        pvdu: pvdu,
         Impuesto: Impuesto,
-        IdEstado: IdEstado,
-        PrecioMinimoVenta: PrecioMinimoVenta,
-        PrecioVentaDistribuidor: PrecioVentaDistribuidor,
-        PrecioVentaPublico: PrecioVentaPublico,
-        PrecioMinimoVentaUSD: PrecioMinimoVentaUSD,
-        PrcPrecioMinimoVenta: PrcPrecioMinimoVenta
+        IdEstado: IdEstado
     })
 
     try {
@@ -83,6 +61,11 @@ const POST = async (req, res) => {
         const resultUnidad = await getUnidad(IdUnidad);
         if (resultUnidad == null) {
             return res.status(400).json({ message: 'IdUnidad invalid Param' })
+        }
+
+        const resultCode = await getProductByCode(Codigo);
+        if (resultCode != null) {
+            return res.status(400).json({ message: 'Codigo already exist' })
         }
 
         const result = await createProduct(productModel);

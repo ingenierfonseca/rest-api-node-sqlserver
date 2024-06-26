@@ -59,19 +59,8 @@ Authorization: {{ACCESS_JWT}}
     "IdUnidad": 27,
     "IdEmpaque": 12,
     "Proveedor": 23,
-    "PrecioCostoUSD": 3.18,
-    "PrecioCostoCOR": 115,
-    "pvpc": 150,
-    "pvdc": 128,
-    "pvpu": 4.15,
-    "pvdu": 3.54,
     "Impuesto": 0,
-    "IdEstado": 0,
-    "PrecioMinimoVenta": 123.05,
-    "PrecioVentaDistribuidor": 11.3,
-    "PrecioVentaPublico": 30.43,
-    "PrecioMinimoVentaUSD": 3.4,
-    "PrcPrecioMinimoVenta": 7
+    "IdEstado": 0
 }
 
 ### GET Products
@@ -108,9 +97,9 @@ Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
 {
-      "AgenciaId": 1,
-      "TipoPrecioId": 1,
-      "ProductoId": 881,
-      "MonedaId": 1,
-      "Precio": "350",
+    "AgenciaId": 1,
+    "TipoPrecioId": 1,
+    "ProductoId": 1059,
+    "MonedaId": 1,
+    "Precio": 350
 }

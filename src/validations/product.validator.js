@@ -2,11 +2,11 @@ import { body, query } from "express-validator";
 import { lastDateSincroValidate } from "./lastDateSincro.validator.js";
 
 export const productDataValidate = [
-    body("Id")
+    /*body("Id")
       .exists({ checkFalsy: true })
       .withMessage("Id is required")
       .isNumeric()
-      .withMessage("Id should be number"),
+      .withMessage("Id should be number"),*/
     body("Codigo")
       .exists({ checkFalsy: true })
       .withMessage("Codigo is required")

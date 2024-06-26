@@ -11,8 +11,7 @@ const POST = async (req, res) => {
         return res.status(400).json({ success: false, errors:  errors['errors']})
     }
 
-    const { 
-        Id,
+    const {
         Codigo,
         Descripcion,
         IdClase,
@@ -25,7 +24,6 @@ const POST = async (req, res) => {
     } = req.body;
 
     const productModel = new Product({
-        Id : Id,
         Codigo: Codigo,
         Descripcion: Descripcion,
         IdClase: IdClase,

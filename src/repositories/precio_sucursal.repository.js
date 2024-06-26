@@ -44,9 +44,9 @@ export const getAll = async (filter, keyword, page, limit, orderBy, sortBy, fech
             limit
         }
 
-        if (orderBy) {
+        /*if (orderBy) {
             queries.order = [[orderBy, sortBy]]
-        }
+        }*/
 
         const data = await PrecioSucursalProducto.findAndCountAll({
             where: query,

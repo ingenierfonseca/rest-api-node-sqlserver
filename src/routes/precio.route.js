@@ -6,7 +6,7 @@ import { priceDataValidate, priceDataValidateFilter } from "../validations/preci
 const router = Router();
 const routeName = '/price-branch';
 router.get(routeName, [priceDataValidateFilter, validatorJWT], price.GETALL)
-//router.get(`${routeName}/:Id`, validatorJWT, price.GET)
+router.get(`${routeName}/:Id`, validatorJWT, price.GET)
 router.post(routeName, [priceDataValidate, validatorJWT], price.POST)
 //router.delete(`${routeName}/:Id`, validatorJWT, price.DELETE)
 

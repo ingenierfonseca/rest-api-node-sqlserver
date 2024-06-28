@@ -12,7 +12,6 @@ export const get = async (req, res) => {
 export const auth = async (req, res) => {
     const {user, password} = req.body
 
-    console.log(user, password)
     if (user == null || password == null) {
         return res.status(400).json({
             message: 'Bad Request. Please fill all fields'
@@ -100,7 +99,6 @@ export const configuration = async (req, res) => {
     const {Id} = req.params
     const {fechaSincro = 0} = req.query
 
-    console.log(Id)
     if (Id == null) {
         return res.status(400).json({
             message: 'Bad Request. Please fill all fields'

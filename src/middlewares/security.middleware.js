@@ -50,7 +50,7 @@ const catchError = (err, req, res, next) => {
             req.uid = uid;
             req.userName = name
             next();
-        } catch (error) {console.log(error);
+        } catch (error) {
             if (err instanceof TokenExpiredError) {
                 return res.status(401).send({ message: "Unauthorized! Access refreshToken expired!" });
             }

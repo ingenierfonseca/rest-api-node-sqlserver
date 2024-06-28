@@ -1,5 +1,5 @@
 import { validationResult } from "express-validator";
-import { getProducts, getProduct, deleteProduct, createProduct, getProductByCode } from "../repositories/product.repository.js";
+import { getProducts, getProduct, deleteProduct, createProduct, getProductByCode, updateProduct } from "../repositories/product.repository.js";
 import Product from "../models/product.model.js";
 import { getClase, getEmpaque, getProveedor, getSubClase, getUnidad } from "../repositories/catalogo.repository.js";
 
@@ -12,6 +12,7 @@ const POST = async (req, res) => {
     }
 
     const {
+        Id,
         Codigo,
         Descripcion,
         IdClase,
@@ -24,6 +25,7 @@ const POST = async (req, res) => {
     } = req.body;
 
     const productModel = new Product({
+        Id: Id,
         Codigo: Codigo,
         Descripcion: Descripcion,
         IdClase: IdClase,
@@ -62,16 +64,26 @@ const POST = async (req, res) => {
         }
 
         const resultCode = await getProductByCode(Codigo);
-        if (resultCode != null) {
+        if (resultCode != null && Id === undefined) {
             return res.status(400).json({ message: 'Codigo already exist' })
         }
 
-        const result = await createProduct(productModel);
+        if (Id === undefined) {
+            const result = await createProduct(productModel);
+            return res.json({
+                success: true,
+                result
+            })
+        } else {
+            const result = await updateProduct(productModel);
 
-        return res.json({
-            success: true,
-            result
-        })
+            if (result == null) return res.status(400).json({ message: 'Id invalid Param' })
+
+            return res.json({
+                success: true,
+                result
+            })
+        }
     } catch (error) {
         res.status(500).json({
             message: error.message

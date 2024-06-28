@@ -27,11 +27,13 @@ export const getConnection = async () => {
 const sequelize = new Sequelize(config.dbDatabase, config.dbUser, config.dbPassword, {
     host: config.dbServer,
     dialect: 'mssql', // Specify your database dialect
+    logging: false
   });
 
 const sequelize2 = new Sequelize('db_a827be_factinventario', 'db_a827be_factinventario_admin', 'Invetfact24*', {
     host: 'SQL5113.site4now.net',
     dialect: 'mssql', // Specify your database dialect
+    logging: false
   });
 
   export { sql, sequelize, sequelize2 };

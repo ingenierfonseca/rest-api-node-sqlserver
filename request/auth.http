@@ -7,11 +7,11 @@
 @apiCatalog = http://localhost:3100/api/v1/catalogs
 @apiPriceBranch = http://localhost:3100/api/v1/price-branch
 
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTg3MjU2NzMsImV4cCI6MTcxODc2ODg3M30.wXyYBDq444KYjkcKSMruatHVTHjGv_SPfEvCahMcy2k
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTk1MzQ5NTgsImV4cCI6MTcxOTU3ODE1OH0.3Qu9YLZ4J2frIB2HdXEYYbFKqmctg4TihPUCVrno2E0
 
 @ACCESS_JWT_REFRESH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM
 
-@FECHASINCRO = 20240531201548557
+@FECHASINCRO = 0
 
 ### GET
 GET {{apiAuth}}
@@ -51,16 +51,16 @@ Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
 {
-    "Id": 818,
-    "Codigo": "818",
-    "Descripcion": "ATOMIZADORLT JARDI HOGAR",
+    "Id": 1058,
+    "Codigo": "1058",
+    "Descripcion": "Iphone 13 Pro Max",
     "IdClase": 2,
     "IdSubClase": 2,
     "IdUnidad": 27,
     "IdEmpaque": 12,
     "Proveedor": 23,
-    "Impuesto": 0,
-    "IdEstado": 0
+    "Impuesto": 1,
+    "IdEstado": 1
 }
 
 ### GET Products
@@ -69,7 +69,7 @@ Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
 ### GET Products
-GET {{apiProduct}}/818
+GET {{apiProduct}}/1059
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
@@ -97,9 +97,21 @@ Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
 {
+    "Id": 1,
     "AgenciaId": 1,
     "TipoPrecioId": 1,
     "ProductoId": 1059,
     "MonedaId": 1,
-    "Precio": 350
+    "Precio": 355.67,
+    "Activo": "true"
 }
+
+### GET Prices
+GET {{apiPriceBranch}}?limit=20&page=1
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+### GET Price by Id
+GET {{apiPriceBranch}}/1
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}

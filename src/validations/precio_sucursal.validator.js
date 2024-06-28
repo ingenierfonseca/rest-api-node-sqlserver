@@ -2,6 +2,10 @@ import { body, query } from "express-validator";
 import { lastDateSincroValidate } from "./lastDateSincro.validator.js";
 
 export const priceDataValidate = [
+    body("Id")
+      .optional()
+      .isNumeric()
+      .withMessage("Id should be number"),
     body("AgenciaId")
       .exists({ checkFalsy: true })
       .withMessage("AgenciaId is required")
@@ -27,6 +31,10 @@ export const priceDataValidate = [
       .withMessage("Precio is required")
       .isNumeric()
       .withMessage("Precio should be number"),
+    body("Activo")
+      .optional()
+      .isBoolean()
+      .withMessage("Precio should be boolean"),
   ];
 
 export const priceDataValidateFilter = [

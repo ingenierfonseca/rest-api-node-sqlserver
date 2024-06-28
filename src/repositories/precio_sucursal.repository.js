@@ -23,6 +23,32 @@ export const create = async (p) => {
     }
 }
 
+export const update = async (p) => {
+    try {
+        const [result] = await PrecioSucursalProducto.update({
+            Id : p.Id,
+            AgenciaId : p.AgenciaId,
+            TipoPrecioId: p.TipoPrecioId,
+            ProductoId: p.ProductoId,
+            MonedaId: p.MonedaId,
+            Precio: p.Precio,
+            Activo: p.Activo,
+            FechaSincronizacion: fechaNumeric17()
+        }, {
+            where: {Id: p.Id}
+        });
+
+        if (result > 0) {
+            return getPrice(p.Id);
+        }
+
+        return null;
+    } catch(error) {
+        console.log(error)
+        return -1;
+    }
+}
+
 export const getAll = async (filter, keyword, page, limit, orderBy, sortBy, fechaSincro) => {
     try {
         const query = {}
@@ -66,6 +92,19 @@ export const getAll = async (filter, keyword, page, limit, orderBy, sortBy, fech
             totalItems: 0,
             data: []
         };
+    }
+}
+
+export const getPrice = async (id) => {
+    try {
+        const price = await PrecioSucursalProducto
+            .findOne({where: {
+                Id: id
+            }})
+        
+        return price
+    } catch (error) {
+        console.log(error)
     }
 }
 

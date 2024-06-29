@@ -64,11 +64,11 @@ const POST = async (req, res) => {
         }
 
         const resultCode = await getProductByCode(Codigo);
-        if (resultCode != null && Id === undefined) {
+        if (resultCode != null && (Id === undefined || Id === 0)) {
             return res.status(400).json({ message: 'Codigo already exist' })
         }
 
-        if (Id === undefined) {
+        if (Id === undefined || Id === 0) {
             const result = await createProduct(productModel);
             return res.json({
                 success: true,

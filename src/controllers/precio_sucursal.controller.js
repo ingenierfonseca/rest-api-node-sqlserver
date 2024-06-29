@@ -54,11 +54,11 @@ const POST = async (req, res) => {
         }
 
         const resultClustered =  await getPriceByClustered(AgenciaId, TipoPrecioId, ProductoId, MonedaId);
-        if (resultClustered != null && Id === undefined) {
+        if (resultClustered != null && (Id === undefined || Id === 0)) {
             return res.status(400).json({ message: 'Data already exist' })
         }
 
-        if (Id === undefined) {
+        if (Id === undefined || Id === 0) {
             const result = await create(priceModel);
             return res.json({
                 success: true,

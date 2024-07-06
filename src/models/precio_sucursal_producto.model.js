@@ -32,7 +32,7 @@ const PrecioSucursalProducto = sequelize2.define('PrecioSucursalProducto', {
         type: DataTypes.BOOLEAN,
         field: 'Activo'
     },
-    FechaSincronizacion: DataTypes.STRING(17)
+    FechaSincronizacion: DataTypes.BIGINT
 }, { 
     tableName: 'prmPrecioSucursalProducto',
     timestamps: false

@@ -104,7 +104,7 @@ const Client = sequelize2.define('Clients', {
         type: DataTypes.DECIMAL,
         field: 'SaldoUSD'
     },
-    FechaSincronizacion: DataTypes.STRING(17)
+    FechaSincronizacion: DataTypes.BIGINT
 }, { 
     tableName: 'prm_Clientes',
     timestamps: false

@@ -92,11 +92,6 @@ export const getClients = async (filter, keyword, page, limit, orderBy, sortBy, 
             where: query,
             ...queries,
             loggin: console.log
-                /*page: +page ? +page : 1,
-                limit: +limit ? +limit : 3,
-                orderBy,
-                sortBy,
-                keyword*/
         });
         
         const res = {

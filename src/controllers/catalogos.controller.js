@@ -1,5 +1,5 @@
 import { validationResult } from "express-validator";
-import { Catalogo, getAllAgencias, getAllClases, getAllEmpaques, getAllMonedas, getAllProveedores, getAllSubClases, getAllTipoPrecios, getAllUnidades } from "../repositories/catalogo.repository.js";
+import { Catalogo, getAllAgencias, getAllClases, getAllEmpaques, getAllMonedas, getAllProveedores, getAllSubClases, getAllTipoIdentificaciones, getAllTipoPrecios, getAllUnidades } from "../repositories/catalogo.repository.js";
 
 const GETALL = async (req, res) => {
     const errors = validationResult(req);
@@ -31,6 +31,9 @@ const GETALL = async (req, res) => {
                     break;
             case Catalogo.PROVEEDOR:
                 result = await getAllProveedores(fechaSincro);
+                break;
+            case Catalogo.TIPOIDENTIFICACION:
+                result = await getAllTipoIdentificaciones(fechaSincro);
                 break;
             case Catalogo.TIPOPRECIO:
                 result = await getAllTipoPrecios(fechaSincro);

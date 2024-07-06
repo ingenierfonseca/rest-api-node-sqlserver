@@ -7,6 +7,7 @@ import { Op } from "sequelize"
 import Moneda from "../models/moneda.model.js"
 import TipoPrecio from "../models/tipo_precio.model.js"
 import Agencia from "../models/agencia.model.js"
+import TipoIdentificacion from "../models/tipo_identificacion.js"
 
 export const Catalogo = {
     AGENCIA: 'agencia',
@@ -15,6 +16,7 @@ export const Catalogo = {
     EMPAQUE: 'empaque',
     MONEDA: 'moneda',
     PROVEEDOR: 'proveedor',
+    TIPOIDENTIFICACION: 'tipo_identificacion',
     TIPOPRECIO: 'tipo_precio',
     UNIDAD: 'unidad'
 }
@@ -72,6 +74,16 @@ export const getMoneda = async (id) => {
 export const getProveedor = async (id) => {
     try {
         const catalog = await Proveedor.findOne({where: {Id: id}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getTipoIdentificacion = async (id) => {
+    try {
+        const catalog = await TipoIdentificacion.findOne({where: {Id: id}})
         
         return catalog
     } catch (error) {
@@ -153,6 +165,16 @@ export const getAllMonedas = async (fechaSincro) => {
 export const getAllProveedores = async (fechaSincro) => {
     try {
         const catalog = await Proveedor.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getAllTipoIdentificaciones = async (fechaSincro) => {
+    try {
+        const catalog = await TipoIdentificacion.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
         
         return catalog
     } catch (error) {

@@ -6,8 +6,9 @@
 @apiProduct = http://localhost:3100/api/v1/product
 @apiCatalog = http://localhost:3100/api/v1/catalogs
 @apiPriceBranch = http://localhost:3100/api/v1/price-branch
+@apiClient = http://localhost:3100/api/v1/client
 
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTk4ODg0NjIsImV4cCI6MTcxOTkzMTY2Mn0.326ThJV9z1N7oKg3zIciOmssOrYp1eIkrARQ9ZSBe1U
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MjAyOTkwNTMsImV4cCI6MTcyMDM0MjI1M30.pinrSbOhgGj8-rtLtmKriei9v93WDdtVtzqYYtataiI
 
 @ACCESS_JWT_REFRESH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM
 
@@ -80,7 +81,7 @@ Authorization: {{ACCESS_JWT}}
 
 
 ### Get Catalogs
-GET {{apiCatalog}}/moneda?fechaSincro={{FECHASINCRO}}
+GET {{apiCatalog}}/tipo_identificacion?fechaSincro={{FECHASINCRO}}
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
@@ -113,5 +114,11 @@ Authorization: {{ACCESS_JWT}}
 
 ### GET Price by Id
 GET {{apiPriceBranch}}/1
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+
+### GET Clients
+GET {{apiClient}}?limit=20&page=1
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}

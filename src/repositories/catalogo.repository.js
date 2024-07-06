@@ -8,6 +8,7 @@ import Moneda from "../models/moneda.model.js"
 import TipoPrecio from "../models/tipo_precio.model.js"
 import Agencia from "../models/agencia.model.js"
 import TipoIdentificacion from "../models/tipo_identificacion.js"
+import Municipio from "../models/municipio.model.js"
 
 export const Catalogo = {
     AGENCIA: 'agencia',
@@ -15,6 +16,7 @@ export const Catalogo = {
     SUBCLASE: 'subclase',
     EMPAQUE: 'empaque',
     MONEDA: 'moneda',
+    MUNICIPIO: 'municipio',
     PROVEEDOR: 'proveedor',
     TIPOIDENTIFICACION: 'tipo_identificacion',
     TIPOPRECIO: 'tipo_precio',
@@ -64,6 +66,16 @@ export const getEmpaque = async (id) => {
 export const getMoneda = async (id) => {
     try {
         const catalog = await Moneda.findOne({where: {Id: id}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getMunicipio = async (id) => {
+    try {
+        const catalog = await Municipio.findOne({where: {Id: id}})
         
         return catalog
     } catch (error) {
@@ -155,6 +167,16 @@ export const getAllEmpaques = async (fechaSincro) => {
 export const getAllMonedas = async (fechaSincro) => {
     try {
         const catalog = await Moneda.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getAllMunicipios = async (fechaSincro) => {
+    try {
+        const catalog = await Municipio.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
         
         return catalog
     } catch (error) {

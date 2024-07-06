@@ -32,7 +32,7 @@ Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
 {
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM"
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOnsiSWQiOjEsIkVtcHJlc2FJRCI6MSwiQ29kaWdvIjoibWFybG9uIiwiQ2xhdmUiOiJtYXJsb24wMSIsIk5vbWJyZXMiOiJNYXJsb24gIiwiQXBlbGxpZG9zIjoiRm9uc2VjYSIsIkZlY2hhU2luY3Jvbml6YWNpb24iOjMxMDUyMDI0MTY1MDMwMTAwfSwiaWF0IjoxNzIwMjQ1NjUzLCJleHAiOjE3NTE4MDMyNTN9.kEI_jZ99-Mj2AcC2HTIGi5p28rfvqKBdg3fgHPipJ0s"
 }
 
 ### Get user
@@ -81,7 +81,7 @@ Authorization: {{ACCESS_JWT}}
 
 
 ### Get Catalogs
-GET {{apiCatalog}}/tipo_identificacion?fechaSincro={{FECHASINCRO}}
+GET {{apiCatalog}}/departamento?fechaSincro={{FECHASINCRO}}
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
@@ -108,7 +108,7 @@ Authorization: {{ACCESS_JWT}}
 }
 
 ### GET Prices
-GET {{apiPriceBranch}}?limit=20&page=1
+GET {{apiPriceBranch}}?limit=20&page=1&fechaSincro=20240629033919443
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
@@ -119,6 +119,6 @@ Authorization: {{ACCESS_JWT}}
 
 
 ### GET Clients
-GET {{apiClient}}?limit=20&page=1
+GET {{apiClient}}?limit=20&page=1&fechaSincro=20240705213813877
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}

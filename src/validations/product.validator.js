@@ -103,7 +103,7 @@ export const productDataValidateFilter = [
     query('page')
         .isNumeric()
         .withMessage('It must be Integer'),
-    query('ultimaFechaSincro')
+    query('fechaSincro')
         .custom((value, { req }) => {
             return lastDateSincroValidate(value, {req})
         }),

@@ -93,7 +93,7 @@ const GETALL = async (req, res) => {
     const {fechaSincro = 0} = req.query
 
     try {
-        const result = await getAll(filter, keyword, parseInt(page), parseInt(limit), orderBy, sortBy, parseInt(fechaSincro));
+        const result = await getAll(filter, keyword, parseInt(page), parseInt(limit), orderBy, sortBy, fechaSincro);
 
         return res.json({
             success: true,

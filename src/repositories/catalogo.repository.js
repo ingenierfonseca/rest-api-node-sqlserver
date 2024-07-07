@@ -168,7 +168,7 @@ export const getAllSubClases = async (fechaSincro) => {
 
 export const getAllDepartamentos = async (fechaSincro) => {
     try {
-        const catalog = await Empaque.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
+        const catalog = await Departamento.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
         
         return catalog
     } catch (error) {

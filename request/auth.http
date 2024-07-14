@@ -8,7 +8,7 @@
 @apiPriceBranch = http://localhost:3100/api/v1/price-branch
 @apiClient = http://localhost:3100/api/v1/client
 
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MjAyOTkwNTMsImV4cCI6MTcyMDM0MjI1M30.pinrSbOhgGj8-rtLtmKriei9v93WDdtVtzqYYtataiI
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MjA5NjU4MTksImV4cCI6MTcyMTAwOTAxOX0.KQj9ZpJxVtjvierRb8p_LlS7eDtHQaofE5UeDUMPSRE
 
 @ACCESS_JWT_REFRESH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM
 
@@ -81,7 +81,7 @@ Authorization: {{ACCESS_JWT}}
 
 
 ### Get Catalogs
-GET {{apiCatalog}}/departamento?fechaSincro={{FECHASINCRO}}
+GET {{apiCatalog}}/vendedor?fechaSincro={{FECHASINCRO}}
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
@@ -122,3 +122,24 @@ Authorization: {{ACCESS_JWT}}
 GET {{apiClient}}?limit=20&page=1&fechaSincro=20240705213813877
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
+
+### POST Client
+POST {{apiClient}}
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+{
+    "Id": 0,
+    "Nombre": "Constructora Nic",
+    "Codigo": "CT-003",
+    "Identificacion": "801130663",
+    "Direccion": "Avenia 35 calle 345",
+    "Telefono": "89898989",
+    "Correo": "nicconstruccion@gmail.com",
+    "IdTipoCliente": 1,
+    "IdTipoId": 1,
+    "NegRegistro": 2,
+    "VendREgistro": 1,
+    "DepRegistro": 12,
+    "MunRegistro": 23,
+}

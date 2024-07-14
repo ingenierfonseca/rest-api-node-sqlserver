@@ -1,25 +1,38 @@
 import { Op } from "sequelize"
-import { fechaNumeric17 } from "../helpers/utils.js";
+import { fechaNumeric17, generarFechaFormateada, generarFechaFormateadaNum } from "../helpers/utils.js";
 import Client from "../models/cliente.model.js";
 
-export const createClient = async (p) => {
+export const createClient = async (c) => {
     try {
         const id = await getNewId();
         const result = await Client.create({
-            Id : id,
-            Codigo: p.Codigo,
-            Descripcion: p.Descripcion,
-            IdClase: p.IdClase,
-            IdSubClase: p.IdSubClase,
-            IdUnidad: p.IdUnidad,
-            IdEmpaque: p.IdEmpaque,
-            Proveedor: p.Proveedor,
-            pvpc: 0,
-            pvdc: 0,
-            pvpu: 0,
-            pvdu: 0,
-            Impuesto: p.Impuesto,
-            IdEstado: p.IdEstado,
+            Id: id,
+            Codigo: c.Codigo,
+            Nombre: c.Nombre,
+            IdTipoCliente: c.IdTipoCliente,
+            IdTipoId: c.IdTipoId,
+            Identificacion: c.Identificacion,
+            Direccion: c.Direccion,
+            NegRegistro: c.NegRegistro,
+            VendREgistro: c.VendREgistro,
+            DepRegistro: c.DepRegistro,
+            MunRegistro: c.MunRegistro,
+            Telefono: c.Telefono,
+            Fax: c.Fax,
+            Correo: c.Correo,
+            Negocio: c.Negocio,
+            DireccionNegocio: c.DireccionNegocio,
+            Contacto1: c.Contacto1,
+            Contacto2: c.Contacto2,
+            Limite: c.Limite,
+            Saldo: c.Saldo,
+            DiasCredito: c.DiasCredito,
+            CTAContable: c.CTAContable,
+            SaldoAFavor: c.SaldoAFavor,
+            SaldoUSD: c.SaldoUSD,
+            Estado: c.Estado,
+            FechaIngreso: generarFechaFormateada(),
+            NumFechaIngreso: generarFechaFormateadaNum(),
             FechaSincronizacion: fechaNumeric17()
         });
 
@@ -30,26 +43,41 @@ export const createClient = async (p) => {
     }
 }
 
-export const updateClient = async (p) => {
+export const updateClient = async (c) => {
     try {
         const [result] = await Client.update({
-            Id : p.Id,
-            Codigo: p.Codigo,
-            Descripcion: p.Descripcion,
-            IdClase: p.IdClase,
-            IdSubClase: p.IdSubClase,
-            IdUnidad: p.IdUnidad,
-            IdEmpaque: p.IdEmpaque,
-            Proveedor: p.Proveedor,
-            Impuesto: p.Impuesto,
-            IdEstado: p.IdEstado,
+            Id: c.Id,
+            Codigo: c.Codigo,
+            Nombre: c.Nombre,
+            IdTipoCliente: c.IdTipoCliente,
+            IdTipoId: c.IdTipoId,
+            Identificacion: c.Identificacion,
+            Direccion: c.Direccion,
+            NegRegistro: c.NegRegistro,
+            VendREgistro: c.VendREgistro,
+            DepRegistro: c.DepRegistro,
+            MunRegistro: c.MunRegistro,
+            Telefono: c.Telefono,
+            Fax: c.Fax,
+            Correo: c.Correo,
+            Negocio: c.Negocio,
+            DireccionNegocio: c.DireccionNegocio,
+            Contacto1: c.Contacto1,
+            Contacto2: c.Contacto2,
+            Limite: c.Limite,
+            Saldo: c.Saldo,
+            DiasCredito: c.DiasCredito,
+            CTAContable: c.CTAContable,
+            SaldoAFavor: c.SaldoAFavor,
+            SaldoUSD: c.SaldoUSD,
+            IdEstado: c.IdEstado,
             FechaSincronizacion: fechaNumeric17()
         }, {
-            where: {Id: p.Id}
+            where: {Id: c.Id}
         });
 
         if (result > 0) {
-            return getClient(p.Id);
+            return getClient(c.Id);
         }
 
         return null;

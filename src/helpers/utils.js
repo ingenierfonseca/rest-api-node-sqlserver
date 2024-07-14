@@ -13,3 +13,21 @@ export const fechaNumeric17 = () => {
     //return Number(dateString);
     return dateString;
 }
+
+export const generarFechaFormateada = (fecha = new Date()) => {
+    const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+    
+    const dia = fecha.getDate();
+    const mes = meses[fecha.getMonth()];
+    const anio = fecha.getFullYear();
+    
+    return `${dia}-${mes}-${anio}`;
+};
+
+export const generarFechaFormateadaNum = (fecha = new Date()) => {
+    const dia = fecha.getDate();
+    const mes = fecha.getMonth();
+    const anio = fecha.getFullYear();
+    
+    return Number(`${anio}${mes}${dia}`);
+};

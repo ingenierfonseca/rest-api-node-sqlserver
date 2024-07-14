@@ -44,7 +44,7 @@ const Client = sequelize2.define('Clients', {
         type: DataTypes.NUMBER,
         field: 'deptregistro'
     },
-    NumRegistro: {
+    MunRegistro: {
         type: DataTypes.NUMBER,
         field: 'munregistro'
     },
@@ -77,11 +77,11 @@ const Client = sequelize2.define('Clients', {
         field: 'contacto02'
     },
     Limite: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.DECIMAL,
         field: 'limite'
     },
     Saldo: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.DECIMAL,
         field: 'saldo'
     },
     DiasCredito: {
@@ -103,6 +103,14 @@ const Client = sequelize2.define('Clients', {
     SaldoUSD: {
         type: DataTypes.DECIMAL,
         field: 'SaldoUSD'
+    },
+    FechaIngreso: {
+        type: DataTypes.STRING,
+        field: 'fechaingreso'
+    },
+    NumFechaIngreso: {
+        type: DataTypes.NUMBER,
+        field: 'numfechaing'
     },
     FechaSincronizacion: DataTypes.STRING(17)
 }, { 

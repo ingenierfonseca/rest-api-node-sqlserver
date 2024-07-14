@@ -1,7 +1,7 @@
 import { validationResult } from "express-validator";
-import { getClase, getEmpaque, getProveedor, getSubClase, getUnidad } from "../repositories/catalogo.repository.js";
+import { getDepartamento, getMunicipio, getNegocio, getTipoIdentificacion, getVendedor } from "../repositories/catalogo.repository.js";
 import Client from "../models/cliente.model.js";
-import { createClient, deleteClient, getClient, getClients, updateClient } from "../repositories/client.repository.js";
+import { createClient, deleteClient, getClient, getClientByCode, getClients, updateClient } from "../repositories/client.repository.js";
 
 
 const POST = async (req, res) => {
@@ -14,56 +14,86 @@ const POST = async (req, res) => {
     const {
         Id,
         Codigo,
-        Descripcion,
-        IdClase,
-        IdSubClase,
-        IdUnidad,
-        IdEmpaque,
-        Proveedor,
-        Impuesto,
-        IdEstado
+        Nombre,
+        IdTipoCliente,
+        IdTipoId,
+        Identificacion,
+        Direccion,
+        NegRegistro,
+        VendREgistro,
+        DepRegistro,
+        MunRegistro,
+        Telefono,
+        Fax,
+        Correo,
+        Negocio,
+        DireccionNegocio,
+        Contacto1,
+        Contacto2,
+        Limite,
+        Saldo,
+        DiasCredito,
+        CTAContable,
+        SaldoAFavor,
+        SaldoUSD,
+        Estado
     } = req.body;
 
     const clientModel = new Client({
         Id: Id,
         Codigo: Codigo,
-        Descripcion: Descripcion,
-        IdClase: IdClase,
-        IdSubClase: IdSubClase,
-        IdUnidad: IdUnidad,
-        IdEmpaque: IdEmpaque,
-        Proveedor: Proveedor,
-        Impuesto: Impuesto,
-        IdEstado: IdEstado
+        Nombre: Nombre,
+        IdTipoCliente: IdTipoCliente,
+        IdTipoId: IdTipoId,
+        Identificacion: Identificacion,
+        Direccion: Direccion,
+        NegRegistro: NegRegistro,
+        VendREgistro: VendREgistro,
+        DepRegistro: DepRegistro,
+        MunRegistro: MunRegistro,
+        Telefono: Telefono,
+        Fax: Fax == undefined ? '' : Fax,
+        Correo: Correo,
+        Negocio: Negocio == undefined ? '' : Negocio,
+        DireccionNegocio: DireccionNegocio == undefined ? '' : DireccionNegocio,
+        Contacto1: Contacto1 == undefined ? '' : Contacto1,
+        Contacto2: Contacto2 == undefined ? '' : Contacto2,
+        Limite: Limite == undefined ? 0.0 : Limite,
+        Saldo: Saldo == undefined ? 0.0 : Saldo,
+        DiasCredito: DiasCredito == undefined ? 0 : DiasCredito,
+        CTAContable: CTAContable == undefined ? '' : CTAContable,
+        SaldoAFavor: SaldoAFavor == undefined ? 0.0 : SaldoAFavor,
+        SaldoUSD: SaldoUSD,
+        Estado: Estado == undefined ? 0 : Estado
     })
 
     try {
-        const resultClase = await getClase(IdClase);
-        if (resultClase == null) {
-            return res.status(400).json({ message: 'IdClase invalid Param' })
+        const resultTipoId = await getTipoIdentificacion(IdTipoId);
+        if (resultTipoId == null) {
+            return res.status(400).json({ message: 'IdTipoId invalid Param' })
         }
 
-        const resultSubClase = await getSubClase(IdSubClase);
-        if (resultSubClase == null) {
-            return res.status(400).json({ message: 'IdSubClase invalid Param' })
+        const resultNegocio = await getNegocio(NegRegistro);
+        if (resultNegocio == null) {
+            return res.status(400).json({ message: 'NegRegistro invalid Param' })
         }
 
-        const resultEmpaque = await getEmpaque(IdEmpaque);
-        if (resultEmpaque == null) {
-            return res.status(400).json({ message: 'IdEmpaque invalid Param' })
+        const resultVendedor = await getVendedor(VendREgistro);
+        if (resultVendedor == null) {
+            return res.status(400).json({ message: 'VendREgistro invalid Param' })
         }
 
-        const resultProveedor = await getProveedor(Proveedor);
-        if (resultProveedor == null) {
-            return res.status(400).json({ message: 'Proveedor invalid Param' })
+        const resultDepartamento = await getDepartamento(DepRegistro);
+        if (resultDepartamento == null) {
+            return res.status(400).json({ message: 'DepRegistro invalid Param' })
         }
 
-        const resultUnidad = await getUnidad(IdUnidad);
-        if (resultUnidad == null) {
-            return res.status(400).json({ message: 'IdUnidad invalid Param' })
+        const resultMunicipio = await getMunicipio(MunRegistro);
+        if (resultMunicipio == null) {
+            return res.status(400).json({ message: 'MunRegistro invalid Param' })
         }
 
-        const resultCode = await getProductByCode(Codigo);
+        const resultCode = await getClientByCode(Codigo);
         if (resultCode != null && (Id === undefined || Id === 0)) {
             return res.status(400).json({ message: 'Codigo already exist' })
         }

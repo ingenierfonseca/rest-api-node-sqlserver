@@ -13,39 +13,132 @@ export const clientDataValidate = [
       .withMessage("Codigo should be string")
       .isLength({max: 50})
       .withMessage('Codigo max length is 50'),
-    body("Descripcion")
+    body("Nombre")
       .exists({ checkFalsy: true })
-      .withMessage("Descripcion is required")
+      .withMessage("Nombre is required")
       .isString()
-      .withMessage("Descripcion should be string")
-      .isLength({max: 600})
-      .withMessage('Descripcion max length is 600'),
-    body("IdClase")
+      .withMessage("Nombre should be string")
+      .isLength({max: 200})
+      .withMessage('Nombre max length is 200'),
+    body("Identificacion")
       .exists({ checkFalsy: true })
-      .withMessage("IdClase is required")
-      .isNumeric()
-      .withMessage("IdClase should be number"),
-    body("IdSubClase")
+      .withMessage("Identificacion is required")
+      .isString()
+      .withMessage("Identificacion should be string")
+      .isLength({max: 200})
+      .withMessage('Identificacion max length is 200'),
+    body("Direccion")
       .exists({ checkFalsy: true })
-      .withMessage("IdSubClase is required")
-      .isNumeric()
-      .withMessage("IdSubClase should be number"),
-    body("IdUnidad")
+      .withMessage("Direccion is required")
+      .isString()
+      .withMessage("Direccion should be string")
+      .isLength({max: 5000})
+      .withMessage('Direccion max length is 5000'),
+    body("Telefono")
       .exists({ checkFalsy: true })
-      .withMessage("IdUnidad is required")
-      .isNumeric()
-      .withMessage("IdUnidad should be number"),
-    body("IdEmpaque")
+      .withMessage("Telefono is required")
+      .isString()
+      .withMessage("Telefono should be string")
+      .isLength({max: 30})
+      .withMessage('Telefono max length is 30'),
+    body("Fax")
+      .optional()
+      .isString()
+      .withMessage("Fax should be string")
+      .isLength({max: 30})
+      .withMessage('Fax max length is 30'),
+    body("Correo")
       .exists({ checkFalsy: true })
-      .withMessage("IdEmpaque is required")
+      .withMessage("Correo is required")
+      .isEmail()
+      .withMessage("Correo should be email")
+      .isLength({max: 30})
+      .withMessage('Correo max length is 30'),
+    body("Negocio")
+      .optional()
+      .isString()
+      .withMessage("Negocio should be string")
+      .isLength({max: 50})
+      .withMessage('Negocio max length is 50'),
+    body("DireccionNegocio")
+      .optional()
+      .isString()
+      .withMessage("DireccionNegocio should be string")
+      .isLength({max: 80})
+      .withMessage('DireccionNegocio max length is 80'),
+    body("Contacto1")
+      .optional()
+      .isString()
+      .withMessage("Contacto1 should be string")
+      .isLength({max: 50})
+      .withMessage('Contacto1 max length is 50'),
+    body("Contacto2")
+      .optional()
+      .isString()
+      .withMessage("Contacto2 should be string")
+      .isLength({max: 50})
+      .withMessage('Contacto2 max length is 50'),
+    body("Limite")
+      .optional()
       .isNumeric()
-      .withMessage("IdEmpaque should be number"),
-    body("Proveedor")
+      .withMessage("Limite should be number"),
+    body("Saldo")
+      .optional()
+      .isNumeric()
+      .withMessage("Saldo should be number"),
+    body("DiasCredito")
+      .optional()
+      .isNumeric()
+      .withMessage("DiasCredito should be number"),
+    body("CTAContable")
+      .optional()
+      .isString()
+      .withMessage("CTAContable should be string")
+      .isLength({max: 16})
+      .withMessage('CTAContable max length is 16'),
+    body("Estado")
+      .optional()
+      .isNumeric()
+      .withMessage("Estado should be number"),
+    body("SaldoAFavor")
+      .optional()
+      .isNumeric()
+      .withMessage("SaldoAFavor should be number"),
+    body("SaldoUSD")
+      .optional()
+      .isNumeric()
+      .withMessage("SaldoUSD should be number"),
+    body("IdTipoCliente")
       .exists({ checkFalsy: true })
-      .withMessage("Proveedor is required")
+      .withMessage("IdTipoCliente is required")
       .isNumeric()
-      .withMessage("Proveedor should be number"),
-    body('Impuesto')
+      .withMessage("IdTipoCliente should be number"),
+    body("IdTipoId")
+      .exists({ checkFalsy: true })
+      .withMessage("IdTipoId is required")
+      .isNumeric()
+      .withMessage("IdTipoId should be number"),
+    body("NegRegistro")
+      .exists({ checkFalsy: true })
+      .withMessage("NegRegistro is required")
+      .isNumeric()
+      .withMessage("NegRegistro should be number"),
+    body("VendREgistro")
+      .exists({ checkFalsy: true })
+      .withMessage("VendREgistro is required")
+      .isNumeric()
+      .withMessage("VendREgistro should be number"),
+    body("DepRegistro")
+      .exists({ checkFalsy: true })
+      .withMessage("DepRegistro is required")
+      .isNumeric()
+      .withMessage("DepRegistro should be number"),
+    body("MunRegistro")
+      .exists({ checkFalsy: true })
+      .withMessage("MunRegistro is required")
+      .isNumeric()
+      .withMessage("MunRegistro should be number"),
+    /*body('Impuesto')
         .custom((value, { req }) => {
             if (!req.body.Impuesto && req.body.Impuesto !== 0) {
                 throw new Error('Impuesto is required');
@@ -55,18 +148,7 @@ export const clientDataValidate = [
             }
         
             return true;
-        }),
-    body('IdEstado')
-        .custom((value, { req }) => {
-            if (!req.body.IdEstado && req.body.IdEstado !== 0) {
-                throw new Error('IdEstado is required');
-            }
-            if (!isNumericIncludingZero(value)) {
-            throw new Error('IdEstado should be number');
-            }
-        
-            return true;
-        }),
+        })*/
   ];
 
   const isNumericIncludingZero = (value) => {

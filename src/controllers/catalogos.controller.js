@@ -1,5 +1,5 @@
 import { validationResult } from "express-validator";
-import { Catalogo, getAllAgencias, getAllClases, getAllDepartamentos, getAllEmpaques, getAllMonedas, getAllMunicipios, getAllProveedores, getAllSubClases, getAllTipoIdentificaciones, getAllTipoPrecios, getAllUnidades } from "../repositories/catalogo.repository.js";
+import { Catalogo, getAllAgencias, getAllClases, getAllDepartamentos, getAllEmpaques, getAllMonedas, getAllMunicipios, getAllNegocios, getAllProveedores, getAllSubClases, getAllTipoIdentificaciones, getAllTipoPrecios, getAllUnidades, getAllVendedores } from "../repositories/catalogo.repository.js";
 
 const GETALL = async (req, res) => {
     const errors = validationResult(req);
@@ -35,6 +35,9 @@ const GETALL = async (req, res) => {
             case Catalogo.MUNICIPIO:
                 result = await getAllMunicipios(fechaSincro);
                 break;
+            case Catalogo.NEGOCIO:
+                result = await getAllNegocios(fechaSincro);
+                break;
             case Catalogo.PROVEEDOR:
                 result = await getAllProveedores(fechaSincro);
                 break;
@@ -46,6 +49,9 @@ const GETALL = async (req, res) => {
                 break;
             case Catalogo.UNIDAD:
                 result = await getAllUnidades(fechaSincro);
+                break;
+            case Catalogo.VENDEDOR:
+                result = await getAllVendedores(fechaSincro);
                 break;
         }
 

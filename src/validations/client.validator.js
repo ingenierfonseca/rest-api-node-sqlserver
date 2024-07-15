@@ -119,8 +119,10 @@ export const clientDataValidate = [
       .isNumeric()
       .withMessage("IdTipoId should be number"),
     body("NegRegistro")
-      .exists({ checkFalsy: true })
+      .exists()
       .withMessage("NegRegistro is required")
+      .notEmpty()
+      .withMessage('NegRegistro should not be empty')
       .isNumeric()
       .withMessage("NegRegistro should be number"),
     body("VendREgistro")

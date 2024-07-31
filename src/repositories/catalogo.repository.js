@@ -12,6 +12,8 @@ import Municipio from "../models/municipio.model.js"
 import Departamento from "../models/departamento.model.js"
 import Negocio from "../models/negocio.model.js"
 import Vendedor from "../models/vendedor.model.js"
+import TipoCliente from "../models/tipo_cliente.model.js"
+import UsuarioAgencia from "../models/usuario_agencia.js"
 
 export const Catalogo = {
     AGENCIA: 'agencia',
@@ -23,9 +25,11 @@ export const Catalogo = {
     MUNICIPIO: 'municipio',
     NEGOCIO: 'negocio',
     PROVEEDOR: 'proveedor',
+    TIPOCLIENTE: 'tipo_cliente',
     TIPOIDENTIFICACION: 'tipo_identificacion',
     TIPOPRECIO: 'tipo_precio',
     UNIDAD: 'unidad',
+    USUARIOAGENCIA: 'usuario_agencia',
     VENDEDOR: 'vendedor'
 }
 
@@ -119,6 +123,16 @@ export const getProveedor = async (id) => {
     }
 }
 
+export const getTipoCliente = async (id) => {
+    try {
+        const catalog = await TipoCliente.findOne({where: {Id: id}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getTipoIdentificacion = async (id) => {
     try {
         const catalog = await TipoIdentificacion.findOne({where: {Id: id}})
@@ -142,6 +156,16 @@ export const getTipoPrecio = async (id) => {
 export const getUnidad = async (id) => {
     try {
         const catalog = await Unidad.findOne({where: {Id: id}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getUsuarioAgencia = async (id) => {
+    try {
+        const catalog = await UsuarioAgencia.findOne({where: {Id: id}})
         
         return catalog
     } catch (error) {
@@ -250,6 +274,16 @@ export const getAllProveedores = async (fechaSincro) => {
     }
 }
 
+export const getAllTipoClientes = async (fechaSincro) => {
+    try {
+        const catalog = await TipoCliente.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getAllTipoIdentificaciones = async (fechaSincro) => {
     try {
         const catalog = await TipoIdentificacion.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
@@ -273,6 +307,26 @@ export const getAllTipoPrecios = async (fechaSincro) => {
 export const getAllUnidades = async (fechaSincro) => {
     try {
         const catalog = await Unidad.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getAllUsuarioAgencias = async (fechaSincro) => {
+    try {
+        const catalog = await UsuarioAgencia.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getAllAgenciasUsuario = async (userId, fechaSincro) => {
+    try {
+        const catalog = await UsuarioAgencia.findAll({where: {UsuarioId: userId, FechaSincronizacion: {[Op.gt]:fechaSincro}}})
         
         return catalog
     } catch (error) {

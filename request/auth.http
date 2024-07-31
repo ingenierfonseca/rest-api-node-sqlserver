@@ -8,7 +8,7 @@
 @apiPriceBranch = http://localhost:3100/api/v1/price-branch
 @apiClient = http://localhost:3100/api/v1/client
 
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MjA5NjU4MTksImV4cCI6MTcyMTAwOTAxOX0.KQj9ZpJxVtjvierRb8p_LlS7eDtHQaofE5UeDUMPSRE
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MjE2OTU0MTQsImV4cCI6MTcyMTczODYxNH0.Fr9dSCKKI2kyDgMjcMcInaTA-zbWGL-0Jv8tGtypV3Q
 
 @ACCESS_JWT_REFRESH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM
 
@@ -81,10 +81,14 @@ Authorization: {{ACCESS_JWT}}
 
 
 ### Get Catalogs
-GET {{apiCatalog}}/vendedor?fechaSincro={{FECHASINCRO}}
+GET {{apiCatalog}}/usuario_agencia?fechaSincro={{FECHASINCRO}}
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
+### Get Catalogs agencia-usuario/
+GET {{apiCatalog}}/agencia-usuario/0?fechaSincro={{FECHASINCRO}}
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
 
 ### Get Prices
 GET {{apiPriceBranch}}?page=1&limit=10&fechaSincro={{FECHASINCRO}}
@@ -129,7 +133,7 @@ Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
 {
-    "Id": 0,
+    "Id": 135,
     "Nombre": "Constructora Nic",
     "Codigo": "CT-003",
     "Identificacion": "801130663",
@@ -138,8 +142,10 @@ Authorization: {{ACCESS_JWT}}
     "Correo": "nicconstruccion@gmail.com",
     "IdTipoCliente": 1,
     "IdTipoId": 1,
-    "NegRegistro": 2,
+    "NegRegistro": 0,
     "VendREgistro": 1,
     "DepRegistro": 12,
     "MunRegistro": 23,
+    "Saldo": 100.34,
+    "Estado": 1
 }

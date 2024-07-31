@@ -13,9 +13,11 @@ export const catalogParamValidateFilter = [
             "municipio", 
             "negocio", 
             "proveedor", 
+            "tipo_cliente",
             "tipo_identificacion", 
             "tipo_precio", 
             "unidad",
+            "usuario_agencia",
             "vendedor"
         ]),
     query('fechaSincro')

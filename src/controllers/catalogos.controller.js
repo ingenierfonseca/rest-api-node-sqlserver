@@ -1,5 +1,5 @@
 import { validationResult } from "express-validator";
-import { Catalogo, getAllAgencias, getAllClases, getAllDepartamentos, getAllEmpaques, getAllMonedas, getAllMunicipios, getAllNegocios, getAllProveedores, getAllSubClases, getAllTipoIdentificaciones, getAllTipoPrecios, getAllUnidades, getAllVendedores } from "../repositories/catalogo.repository.js";
+import { Catalogo, getAllAgencias, getAllAgenciasUsuario, getAllClases, getAllDepartamentos, getAllEmpaques, getAllMonedas, getAllMunicipios, getAllNegocios, getAllProveedores, getAllSubClases, getAllTipoClientes, getAllTipoIdentificaciones, getAllTipoPrecios, getAllUnidades, getAllUsuarioAgencias, getAllVendedores } from "../repositories/catalogo.repository.js";
 
 const GETALL = async (req, res) => {
     const errors = validationResult(req);
@@ -41,6 +41,9 @@ const GETALL = async (req, res) => {
             case Catalogo.PROVEEDOR:
                 result = await getAllProveedores(fechaSincro);
                 break;
+            case Catalogo.TIPOCLIENTE:
+                result = await getAllTipoClientes(fechaSincro);
+                break;
             case Catalogo.TIPOIDENTIFICACION:
                 result = await getAllTipoIdentificaciones(fechaSincro);
                 break;
@@ -49,6 +52,9 @@ const GETALL = async (req, res) => {
                 break;
             case Catalogo.UNIDAD:
                 result = await getAllUnidades(fechaSincro);
+                break;
+            case Catalogo.USUARIOAGENCIA:
+                result = await getAllUsuarioAgencias(fechaSincro);
                 break;
             case Catalogo.VENDEDOR:
                 result = await getAllVendedores(fechaSincro);
@@ -66,4 +72,28 @@ const GETALL = async (req, res) => {
     }
 }
 
-export default { GETALL };
+export const GETAGENCIAUSUARIO = async (req, res) => {
+    const {Id} = req.params
+    const {fechaSincro = 0} = req.query
+
+    if (Id == null) {
+        return res.status(400).json({
+            message: 'Bad Request. Please fill all fields'
+        })
+    }
+
+    try {
+        const result = await getAllAgenciasUsuario(Id, fechaSincro)
+
+        return res.json({
+            ok: true,
+            result
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        })
+    }
+}
+
+export default { GETALL, GETAGENCIAUSUARIO };

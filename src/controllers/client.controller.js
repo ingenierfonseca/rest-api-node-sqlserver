@@ -1,5 +1,5 @@
 import { validationResult } from "express-validator";
-import { getDepartamento, getMunicipio, getNegocio, getTipoIdentificacion, getVendedor } from "../repositories/catalogo.repository.js";
+import { getDepartamento, getMunicipio, getNegocio, getTipoCliente, getTipoIdentificacion, getVendedor } from "../repositories/catalogo.repository.js";
 import Client from "../models/cliente.model.js";
 import { createClient, deleteClient, getClient, getClientByCode, getClients, updateClient } from "../repositories/client.repository.js";
 
@@ -68,6 +68,11 @@ const POST = async (req, res) => {
     })
 
     try {
+        const resultTipoCliente = await getTipoCliente(IdTipoCliente);
+        if (resultTipoCliente == null) {
+            return res.status(400).json({ message: 'IdTipoCliente invalid Param' })
+        }
+
         const resultTipoId = await getTipoIdentificacion(IdTipoId);
         if (resultTipoId == null) {
             return res.status(400).json({ message: 'IdTipoId invalid Param' })

@@ -8,7 +8,8 @@ export const getFacturasCliente = async (id, fechaSincro) => {
         });
         const res = resultados.map(row => new FacturaRes(
             row.numero, row.fechaing, row.fechaven, row.saldo, row.saldoUSD, row.FechaEmisionDate,
-            row.FechaVencimientoDate, row.registro, row.IdRegistro, row.Moneda, row.IdMoneda
+            row.FechaVencimientoDate, row.registro, row.IdRegistro, row.Moneda, row.IdMoneda,
+            row.FechaSincronizacion
         ));
         return res;
     } catch (error) {

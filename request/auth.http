@@ -8,7 +8,7 @@
 @apiPriceBranch = http://localhost:3100/api/v1/price-branch
 @apiClient = http://localhost:3100/api/v1/client
 
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MjE2OTU0MTQsImV4cCI6MTcyMTczODYxNH0.Fr9dSCKKI2kyDgMjcMcInaTA-zbWGL-0Jv8tGtypV3Q
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MjI0NDMxOTQsImV4cCI6MTcyMjQ4NjM5NH0.As-TpHOHDgHFONdWFg2iXRrpunB3P8AzYWUaK_eqfDM
 
 @ACCESS_JWT_REFRESH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM
 
@@ -81,12 +81,17 @@ Authorization: {{ACCESS_JWT}}
 
 
 ### Get Catalogs
-GET {{apiCatalog}}/usuario_agencia?fechaSincro={{FECHASINCRO}}
+GET {{apiCatalog}}/agencia?fechaSincro={{FECHASINCRO}}
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 
 ### Get Catalogs agencia-usuario/
-GET {{apiCatalog}}/agencia-usuario/0?fechaSincro={{FECHASINCRO}}
+GET {{apiCatalog}}/agencia-usuario/1?fechaSincro={{FECHASINCRO}}
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+### Get Catalogs facturas-usuario/
+GET {{apiCatalog}}/facturas-usuario/89?fechaSincro={{FECHASINCRO}}
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 

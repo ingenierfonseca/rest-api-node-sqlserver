@@ -1,7 +1,6 @@
 import { getConnection } from "../db/connection.js"
 import { login, getConfiguration, getUser, getUserById } from "../repositories/auth.repository.js"
 import { generateJWT, refreshTokenJWT } from "../helpers/jws.js"
-import { validationResult } from "express-validator"
 
 export const get = async (req, res) => {
     const pool = await getConnection()

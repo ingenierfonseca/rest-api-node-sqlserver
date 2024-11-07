@@ -1,5 +1,5 @@
 import { validationResult } from "express-validator";
-import { Catalogo, getAllAgencias, getAllAgenciasUsuario, getAllClases, getAllDepartamentos, getAllEmpaques, getAllMonedas, getAllMunicipios, getAllNegocios, getAllProveedores, getAllSubClases, getAllTipoClientes, getAllTipoIdentificaciones, getAllTipoPrecios, getAllUnidades, getAllUsuarioAgencias, getAllVendedores } from "../repositories/catalogo.repository.js";
+import { Catalogo, getAllAgencias, getAllAgenciasUsuario, getAllClases, getAllDepartamentos, getAllEmpaques, getAllMonedas, getAllMunicipios, getAllNegocios, getAllProveedores, getAllSubClases, getAllTipoClientes, getAllTipoFacturas, getAllTipoIdentificaciones, getAllTipoPrecios, getAllUnidades, getAllUsuarioAgencias, getAllVendedores } from "../repositories/catalogo.repository.js";
 import { getFacturasCliente } from "../repositories/factura.repository.js";
 
 const GETALL = async (req, res) => {
@@ -44,6 +44,9 @@ const GETALL = async (req, res) => {
                 break;
             case Catalogo.TIPOCLIENTE:
                 result = await getAllTipoClientes(fechaSincro);
+                break;
+            case Catalog.TIPOFACTURA:
+                result = await getAllTipoFacturas(fechaSincro);
                 break;
             case Catalogo.TIPOIDENTIFICACION:
                 result = await getAllTipoIdentificaciones(fechaSincro);

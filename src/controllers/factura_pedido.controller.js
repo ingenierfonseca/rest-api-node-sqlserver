@@ -1,6 +1,6 @@
 import { validationResult } from "express-validator";
 import FacturaPedido from "../models/factura_pedido.model.js";
-import { getAgencia, getClase, getEmpaque, getMoneda, getProveedor, getSubClase, getUnidad, getVendedor } from "../repositories/catalogo.repository.js";
+import { getAgencia, getClase, getEmpaque, getMoneda, getProveedor, getSubClase, getTipoFactura, getUnidad, getVendedor } from "../repositories/catalogo.repository.js";
 import { getFacturaPedido, getFacturaPedidos, deleteFacturaPedido, createFacturaPedido, updateFacturaPedido } from "../repositories/factura_pedido.repository.js";
 import { getClient } from "../repositories/client.repository.js";
 
@@ -93,12 +93,12 @@ const POST = async (req, res) => {
         const resultFactura = await getUnidad(FacturaID);
         if (resultFactura == null) {
             return res.status(400).json({ message: 'FacturaID invalid Param' })
-        }
+        }*/
 
-        const resultTipoFactura = await getUnidad(TipoFacturaID);
+        const resultTipoFactura = await getTipoFactura(TipoFacturaID);
         if (resultTipoFactura == null) {
             return res.status(400).json({ message: 'TipoFacturaID invalid Param' })
-        }*/
+        }
 
         const resultMoneda = await getMoneda(MonedaID);
         if (resultMoneda == null) {

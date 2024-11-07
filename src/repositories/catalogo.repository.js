@@ -14,6 +14,7 @@ import Negocio from "../models/negocio.model.js"
 import Vendedor from "../models/vendedor.model.js"
 import TipoCliente from "../models/tipo_cliente.model.js"
 import UsuarioAgencia from "../models/usuario_agencia.js"
+import TipoFactura from "../models/tipo_factura.js"
 
 export const Catalogo = {
     AGENCIA: 'agencia',
@@ -28,6 +29,7 @@ export const Catalogo = {
     TIPOCLIENTE: 'tipo_cliente',
     TIPOIDENTIFICACION: 'tipo_identificacion',
     TIPOPRECIO: 'tipo_precio',
+    TIPOFACTURA: 'tipo_factura',
     UNIDAD: 'unidad',
     USUARIOAGENCIA: 'usuario_agencia',
     VENDEDOR: 'vendedor'
@@ -126,6 +128,16 @@ export const getProveedor = async (id) => {
 export const getTipoCliente = async (id) => {
     try {
         const catalog = await TipoCliente.findOne({where: {Id: id}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getTipoFactura = async (id) => {
+    try {
+        const catalog = await TipoFactura.findOne({where: {Id: id}})
         
         return catalog
     } catch (error) {
@@ -277,6 +289,16 @@ export const getAllProveedores = async (fechaSincro) => {
 export const getAllTipoClientes = async (fechaSincro) => {
     try {
         const catalog = await TipoCliente.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getAllTipoFacturas = async (fechaSincro) => {
+    try {
+        const catalog = await TipoFactura.findAll({where: {FechaSincronizacion: {[Op.gt]:fechaSincro}}})
         
         return catalog
     } catch (error) {

@@ -46,7 +46,7 @@ export const createFacturaPedido = async (p) => {
 export const updateFacturaPedido = async (p) => {
     try {
         const [result] = await FacturaPedido.update({
-            Id : id,
+            Id : p.Id,
             NumeroPedido: p.NumeroPedido,
             NumeroFactura: p.NumeroFactura,
             FechaPedidoInt: p.FechaPedidoInt == null ? generarFechaFormateadaNum() : p.FechaPedidoInt,

@@ -14,6 +14,7 @@ export const catalogParamValidateFilter = [
             "negocio", 
             "proveedor", 
             "tipo_cliente",
+            "tipo_factura",
             "tipo_identificacion", 
             "tipo_precio", 
             "unidad",

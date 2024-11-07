@@ -7,8 +7,10 @@
 @apiCatalog = http://localhost:3100/api/v1/catalogs
 @apiPriceBranch = http://localhost:3100/api/v1/price-branch
 @apiClient = http://localhost:3100/api/v1/client
+@apiOrder = http://localhost:3200/api/v1/order
+@apiOrderDet = http://localhost:3200/api/v1/order-det
 
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MjI0NDMxOTQsImV4cCI6MTcyMjQ4NjM5NH0.As-TpHOHDgHFONdWFg2iXRrpunB3P8AzYWUaK_eqfDM
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MzA5OTQyNjUsImV4cCI6MTczMTAzNzQ2NX0.zZJ8e0tXZAdbUaRt6xQ-Dhn_Ozzr9-YgnFAa48gEQJI
 
 @ACCESS_JWT_REFRESH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM
 
@@ -153,4 +155,60 @@ Authorization: {{ACCESS_JWT}}
     "MunRegistro": 23,
     "Saldo": 100.34,
     "Estado": 1
+}
+
+### GET Orders
+GET {{apiOrder}}?limit=20&page=1&fechaSincro=20240705213813877
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+### POST Order
+POST {{apiOrder}}
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+{
+    "NumeroPedido": "PD-1021225",
+    "NumeroFactura": "FT-1021225",
+    "VendedorID": 1,
+    "ClienteID": 1,
+    "UsuarioID": 1,
+    "AgenciaID": 1,
+    "EstadoID": 1,
+    "FacturaID": 1,
+    "TipoFacturaID": 1,
+    "MonedaID": 1,
+    "UsuarioEstadoID": 1,
+    "Direccion": "Avenia 35 calle 345",
+    "NombreCliente": "Marlon Jose Fonseca Garcia",
+    "SubTotal": 100.00,
+    "Impuesto": 10.00,
+    "Retencion": 0.00,
+    "Total": 110.00,
+    "DiasCredito": 0,
+    "TipoCambio": 36.5,
+    "NumFechaEstado": 0,
+    "Saldo": 100.34,
+    "Estado": 1
+}
+
+
+### GET Orders-Det
+GET {{apiOrderDet}}?limit=20&page=1&fechaSincro=20240705213813877&filter=PedidoID&keyword=1
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+### POST Order-Det
+POST {{apiOrderDet}}
+Content-Type: application/json
+Authorization: {{ACCESS_JWT}}
+
+{
+    "PedidoID": 1,
+    "ProductoID": 1,
+    "Cantidad": 1,
+    "Precio": 100.00,
+    "SubTotal": 100.00,
+    "IGV": 10.00,
+    "Total": 110.00
 }

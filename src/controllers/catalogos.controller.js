@@ -45,7 +45,7 @@ const GETALL = async (req, res) => {
             case Catalogo.TIPOCLIENTE:
                 result = await getAllTipoClientes(fechaSincro);
                 break;
-            case Catalog.TIPOFACTURA:
+            case Catalogo.TIPOFACTURA:
                 result = await getAllTipoFacturas(fechaSincro);
                 break;
             case Catalogo.TIPOIDENTIFICACION:

@@ -130,6 +130,28 @@ export const orderDataValidate = [
         
             return true;
         }),
+    body("TipoCambio")
+        .custom((value, { req }) => {
+            if (!req.body.TipoCambio && req.body.TipoCambio !== 0) {
+                throw new Error('TipoCambio is required');
+            }
+            if (!isNumericIncludingZero(value)) {
+            throw new Error('TipoCambio should be number');
+            }
+        
+            return true;
+        }),
+    body("NumFechaEstado")
+        .custom((value, { req }) => {
+            if (!req.body.NumFechaEstado && req.body.NumFechaEstado !== 0) {
+                throw new Error('NumFechaEstado is required');
+            }
+            if (!isNumericIncludingZero(value)) {
+            throw new Error('NumFechaEstado should be number');
+            }
+        
+            return true;
+        }),
   ];
 
   const isNumericIncludingZero = (value) => {

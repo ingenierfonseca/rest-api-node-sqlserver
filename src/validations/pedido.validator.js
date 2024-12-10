@@ -45,11 +45,11 @@ export const orderDataValidate = [
       .withMessage("EstadoID is required")
       .isNumeric()
       .withMessage("EstadoID should be number"),
-    body("FacturaID")
+    /*body("FacturaID")
       .exists({ checkFalsy: true })
       .withMessage("FacturaID is required")
       .isNumeric()
-      .withMessage("FacturaID should be number"),
+      .withMessage("FacturaID should be number"),*/
     body("TipoFacturaID")
       .exists({ checkFalsy: true })
       .withMessage("TipoFacturaID is required")
@@ -60,11 +60,11 @@ export const orderDataValidate = [
       .withMessage("MonedaID is required")
       .isNumeric()
       .withMessage("MonedaID should be number"),
-    body("UsuarioEstadoID")
+    /*body("UsuarioEstadoID")
       .exists({ checkFalsy: true })
       .withMessage("UsuarioEstadoID is required")
       .isNumeric()
-      .withMessage("UsuarioEstadoID should be number"),
+      .withMessage("UsuarioEstadoID should be number"),*/
     body('Impuesto')
         .custom((value, { req }) => {
             if (!req.body.Impuesto && req.body.Impuesto !== 0) {
@@ -141,7 +141,7 @@ export const orderDataValidate = [
         
             return true;
         }),
-    body("NumFechaEstado")
+    /*body("NumFechaEstado")
         .custom((value, { req }) => {
             if (!req.body.NumFechaEstado && req.body.NumFechaEstado !== 0) {
                 throw new Error('NumFechaEstado is required');
@@ -151,7 +151,7 @@ export const orderDataValidate = [
             }
         
             return true;
-        }),
+        }),*/
   ];
 
   const isNumericIncludingZero = (value) => {
@@ -165,7 +165,7 @@ export const orderDataValidateFilter = [
         }
 
         if (value !== undefined) {
-          if (value !== 'codigo' && value !== 'descripcion' && value !== 'regproveedor') {
+          if (value !== 'codigo' && value !== 'descripcion' && value !== 'vendedor') {
             throw new Error('filter invalid value');
           }
         }

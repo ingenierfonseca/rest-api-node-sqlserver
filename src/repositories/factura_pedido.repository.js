@@ -70,7 +70,7 @@ export const updateFacturaPedido = async (p) => {
             Total:p.Total,
             DiasCredito: p.DiasCredito,
             TipoCambio: p.TipoCambio,
-            NumFechaEstado: p.NumFechaEstado,
+            NumFechaEstado: p.NumFechaEstado == null ? generarFechaFormateadaNum() : p.NumFechaEstado,
             FechEstado: p.FechEstado,
             Direccion: p.Direccion,
             FechaSincronizacion: fechaNumeric17()
@@ -98,8 +98,8 @@ export const getFacturaPedidos = async (filter, keyword, page, limit, orderBy, s
                 query.Descripcion = {[Op.substring]: keyword}
             } else if (filter === 'codigo') {
                 query.Codigo = {[Op.substring]: keyword}
-            } else if (filter === 'regproveedor') {
-                query.Proveedor = {[Op.substring]: keyword}
+            } else if (filter === 'vendedor') {
+                query.VendedorID = {[Op.substring]: keyword}
             }
         }
         

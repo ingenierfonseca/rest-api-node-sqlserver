@@ -20,6 +20,10 @@ const Vendedor = sequelize2.define('Vendedor', {
         type: DataTypes.TINYINT,
         field: 'estado'
     },
+    IdUsuario: {
+        type: DataTypes.INTEGER,
+        field: 'UsuarioID'
+    },
     FechaSincronizacion: DataTypes.BIGINT
 }, { 
     tableName: 'prm_Vendedores',

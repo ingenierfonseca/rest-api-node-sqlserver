@@ -8,5 +8,6 @@ const routeName = '/catalogs';
 router.get(`${routeName}/:Catalog`, [catalogParamValidateFilter, validatorJWT], catalog.GETALL)
 router.get(`${routeName}/agencia-usuario/:Id`, validatorJWT, catalog.GETAGENCIAUSUARIO)
 router.get(`${routeName}/facturas-usuario/:Id`, validatorJWT, catalog.GETFACTURAUSUARIO)
+router.get(`${routeName}/empresa-config/:Id`, validatorJWT, catalog.GETEMPRESACONFIG)
 
 export default router;

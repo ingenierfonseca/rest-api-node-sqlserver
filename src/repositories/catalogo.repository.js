@@ -15,6 +15,7 @@ import Vendedor from "../models/vendedor.model.js"
 import TipoCliente from "../models/tipo_cliente.model.js"
 import UsuarioAgencia from "../models/usuario_agencia.js"
 import TipoFactura from "../models/tipo_factura.js"
+import Empresa from "../models/empresa.model.js"
 
 export const Catalogo = {
     AGENCIA: 'agencia',
@@ -78,6 +79,16 @@ export const getDepartamento = async (id) => {
 export const getEmpaque = async (id) => {
     try {
         const catalog = await Empaque.findOne({where: {Id: id}})
+        
+        return catalog
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getEmpresaCongi = async (id) => {
+    try {
+        const catalog = await Empresa.findOne({where: {Id: id}})
         
         return catalog
     } catch (error) {

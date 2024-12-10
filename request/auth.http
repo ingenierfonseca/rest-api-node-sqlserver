@@ -10,7 +10,7 @@
 @apiOrder = http://localhost:3200/api/v1/order
 @apiOrderDet = http://localhost:3200/api/v1/order-det
 
-@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MzA5OTQyNjUsImV4cCI6MTczMTAzNzQ2NX0.zZJ8e0tXZAdbUaRt6xQ-Dhn_Ozzr9-YgnFAa48gEQJI
+@ACCESS_JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MzI1NDMyNjUsImV4cCI6MTczMjU4NjQ2NX0.77SodiKronxB0ZQyZgKOLVMJVOuiOc8xLip5smXADiA
 
 @ACCESS_JWT_REFRESH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsIm5hbWUiOiJtYXJsb24iLCJpYXQiOjE3MTU4Mjg3OTAsImV4cCI6MTc0NzM4NjM5MH0.SyCAW5qV85TfJmfPZTeuTC2fRvuA5PYJWyOb_JDqCBM
 
@@ -83,7 +83,7 @@ Authorization: {{ACCESS_JWT}}
 
 
 ### Get Catalogs
-GET {{apiCatalog}}/tipo_factura?fechaSincro={{FECHASINCRO}}
+GET {{apiCatalog}}/vendedor?fechaSincro={{FECHASINCRO}}
 Content-Type: application/json
 Authorization: {{ACCESS_JWT}}
 

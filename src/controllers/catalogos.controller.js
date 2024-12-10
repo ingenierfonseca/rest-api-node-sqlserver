@@ -1,5 +1,5 @@
 import { validationResult } from "express-validator";
-import { Catalogo, getAllAgencias, getAllAgenciasUsuario, getAllClases, getAllDepartamentos, getAllEmpaques, getAllMonedas, getAllMunicipios, getAllNegocios, getAllProveedores, getAllSubClases, getAllTipoClientes, getAllTipoFacturas, getAllTipoIdentificaciones, getAllTipoPrecios, getAllUnidades, getAllUsuarioAgencias, getAllVendedores } from "../repositories/catalogo.repository.js";
+import { Catalogo, getAllAgencias, getAllAgenciasUsuario, getAllClases, getAllDepartamentos, getAllEmpaques, getAllMonedas, getAllMunicipios, getAllNegocios, getAllProveedores, getAllSubClases, getAllTipoClientes, getAllTipoFacturas, getAllTipoIdentificaciones, getAllTipoPrecios, getAllUnidades, getAllUsuarioAgencias, getAllVendedores, getEmpresaCongi } from "../repositories/catalogo.repository.js";
 import { getFacturasCliente } from "../repositories/factura.repository.js";
 
 const GETALL = async (req, res) => {
@@ -124,4 +124,28 @@ export const GETFACTURAUSUARIO = async (req, res) => {
     }
 }
 
-export default { GETALL, GETAGENCIAUSUARIO, GETFACTURAUSUARIO };
+export const GETEMPRESACONFIG = async (req, res) => {
+    const {Id} = req.params
+    const {fechaSincro = 0} = req.query
+
+    if (Id == null) {
+        return res.status(400).json({
+            message: 'Bad Request. Please fill all fields'
+        })
+    }
+
+    try {
+        const result = await getEmpresaCongi(parseInt(Id), fechaSincro)
+
+        return res.json({
+            ok: true,
+            result
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        })
+    }
+}
+
+export default { GETALL, GETAGENCIAUSUARIO, GETFACTURAUSUARIO, GETEMPRESACONFIG };

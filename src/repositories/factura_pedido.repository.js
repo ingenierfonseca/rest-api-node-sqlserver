@@ -30,7 +30,7 @@ export const createFacturaPedido = async (p) => {
             Total:p.Total,
             DiasCredito: p.DiasCredito,
             TipoCambio: p.TipoCambio,
-            NumFechaEstado: p.NumFechaEstado,
+            NumFechaEstado: p.NumFechaEstado == null ? generarFechaFormateadaNum() : p.NumFechaEstado,
             FechEstado: p.FechEstado,
             Direccion: p.Direccion,
             FechaSincronizacion: fechaNumeric17()

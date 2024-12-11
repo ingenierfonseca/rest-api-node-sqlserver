@@ -67,9 +67,9 @@ export const getFacturaPedidosDet = async (filter, keyword, page, limit, orderBy
         
         query.FechaSincronizacion = {[Op.gt]: fechaSincro}
 
-        if (fechaSincro == 0) {
+        /*if (fechaSincro == 0) {
             query.IdEstado = {[Op.gt]: 0}
-        }
+        }*/
 
         const queries = {
             offset: (page -1) * limit,

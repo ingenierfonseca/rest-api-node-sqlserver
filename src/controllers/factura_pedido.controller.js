@@ -35,7 +35,8 @@ const POST = async (req, res) => {
         Total,
         DiasCredito,
         TipoCambio,
-        NumFechaEstado
+        NumFechaEstado,
+        Direccion
     } = req.body;
 
     const productModel = new FacturaPedido({
@@ -61,7 +62,8 @@ const POST = async (req, res) => {
         Total: Total,
         DiasCredito: DiasCredito,
         TipoCambio: TipoCambio,
-        NumFechaEstado: NumFechaEstado
+        NumFechaEstado: NumFechaEstado,
+        Direccion: Direccion
     })
 
     try {
